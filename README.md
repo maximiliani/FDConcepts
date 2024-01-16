@@ -20,3 +20,4 @@ Examples of JSON Documents for different types of elements in the FAIR Data Ecos
 |----------|---------------------------------------|-------------------------------------------------------------------------|
 | `PID ->` | A PID pointing to thing after it      | `PID -> Schema`                                                         |
 | `-INH->` | Something inherits from another thing | `SHA256 -INH-> Checksum`<br/> `HTTPLocation -INH-> URL -INH-> Location` |
+| `OR`     | Describes an alternative              | `any OR PID->JSON`                                                      |
