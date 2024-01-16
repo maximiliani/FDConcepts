@@ -1,0 +1,12 @@
+{
+    "PID -> kernelInformationProfile -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String": "PID -> Schema-based Metadata Type Profile",
+    "PID -> e-tag -INH-> PID -> sha256sum -INH-> PID -> checksum -INH-> PID -> String": "87f5204031c4a60600f7994df149625ac85f96c8a720d71c84a88834af9a70cc",
+    "PID -> dateCreated -INH-> PID -> date-time-rfc3339": "2023-10-24T00:00:00+00:00",
+    "PID -> digitalObjectLocation -INH-> PID -> URL -INH-> PID -> String": ["https://metarepo.nffa.eu/api/v1/metadata/82100167-4424-4e98-91e9-8f886a8571dd?version=1", "https://metarepo.nffa.eu/"],
+    "PID -> version -INH-> PID -> version-number -INH-> PID -> String": "1.0.0",
+    "PID -> license -INH-> PID -> licenseURL -INH-> PID -> URL -INH-> PID -> String": "https://creativecommons.org/licenses/by/4.0/",
+    "PID -> contact -INH-> PID -> URL -INH-> PID -> String": "https://orcid.org/0009-0007-0235-4995",
+    "PID -> mimeType -INH-> PID -> genericObjectType -INH-> [PID -> Handle-Identifier-ASCII -INH-> PID -> String, PID -> media-type-IANA -INH-> PID -> String]": "application/json",
+    "PID -> metadataSchema -INH-> [PID -> schemaPID -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String, PID -> schemaLocation -INH-> PID -> URL -INH-> PID -> String, PID -> schemaVersion -INH-> PID -> version -INH-> PID -> version-number -INH-> PID -> String]": { "PID -> schemaLocation": "https://metarepo.nffa.eu/api/v1/schemas/mri_schema?version=8", "PID -> schemaVersion": "8.0.0" }
+}   
+  
