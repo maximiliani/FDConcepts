@@ -1,0 +1,61 @@
+{
+  "type": "operation",
+  "title": "Get ORCiD Profile Information",
+  "description": "This is a basic",
+  "createdAt": "20231115Z1800",
+  "provenance": [
+    {
+      "type": "orcid",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    },
+    {
+      "type": "plain",
+      "name": "Nicolas Blumenröhr",
+      "email": "nicolas.blumenroehr@kit.edu"
+    }
+  ],
+  "executableFDOperationTypes": "PID -> REST",
+  "inputTypes": [
+    {
+      "key": "PID -> ORCiD",
+      "name": "orcid"
+    },
+    {
+      "key": "ENV -> APIKey",
+      "name": "apiKey"
+    }
+  ],
+  "outputTypes": [
+    {
+      "type": "PID -> ORCiDProfile",
+      "name": "profile"
+    }
+  ],
+  "requiredAttributes": [],
+  "execution": [
+    {
+      "title": "Get profile data from ORCID.org API",
+      "mode": "sync",
+      "operationTypeProfile": "PID -> HTTP",
+      "attributes": [
+        {
+          "key": "url",
+          "value": "https://orcid.org/api/$1&apiKey=$2"
+        },
+        {
+          "key": "method",
+          "value": "PID -> HTTPMethod.GET"
+        },
+        {
+          "key": "$1",
+          "value": "PID -> ORCID"
+        },
+        {
+          "key": "$2",
+          "value": "PID -> APIKey"
+        }
+      ],
+      "result": "profile"
+    }
+  ]
+}
