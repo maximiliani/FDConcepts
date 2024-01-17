@@ -1,0 +1,117 @@
+{
+  "type": "workflow",
+  "title": "Map with mapping service",
+  "description": "This is a basic",
+  "createdAt": "20231115Z1800",
+  "provenance": [
+    {
+      "type": "orcid",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    },
+    {
+      "type": "plain",
+      "name": "Nicolas Blumenröhr",
+      "email": "nicolas.blumenroehr@kit.edu"
+    }
+  ],
+  "inputTypes": [
+    {
+      "key": "PID -> MPSSchema",
+      "name": "mpsSchema"
+    },
+    {
+      "key": "PID -> MPSPlugin",
+      "name": "mpsPlugin"
+    },
+    {
+      "key": "PID -> URL",
+      "name": "documentURL"
+    }
+  ],
+  "outputTypes": {
+    "type": "PID -> JSONDocument",
+    "name": "mappedDocument"
+  },
+  "requiredAttributes": [],
+  "execution": [
+    {
+      "title": "Download files",
+      "mode": "async",
+      "steps": [
+        {
+          "operation": "PID -> Download file",
+          "url": "mpsSchema",
+          "result": "schema"
+        },
+        {
+          "operation": "PID -> Download file",
+          "url": "mpsPlugin",
+          "result": "plugin"
+        },
+        {
+          "operation": "PID -> Download file",
+          "url": "documentURL",
+          "result": "document"
+        }
+      ]
+    },
+    {
+      "title": "Start mapping service",
+      "mode": "sync",
+      "operation": "PID -> DockerMappingService",
+      "attributes": [
+        {
+          "key": "plugins",
+          "value": [
+            "plugin"
+          ]
+        }
+      ],
+      "result": "mpsURL"
+    },
+    {
+      "title": "Upload schema to Mapping-Service",
+      "mode": "sync",
+      "operationTypeProfile": "PID -> HTTP",
+      "attributes": [
+        {
+          "key": "url",
+          "value": "mpsURL"
+        },
+        {
+          "key": "method",
+          "value": "PID -> HTTPMethod.POST"
+        },
+        {
+          "key": "payload",
+          "value": "schema"
+        }
+      ],
+      "result": "schemaID"
+    },
+    {
+      "title": "Map document",
+      "mode": "sync",
+      "operationTypeProfile": "PID -> HTTP",
+      "attributes": [
+        {
+          "key": "url",
+          "value": "mpsURL/mappingExec/$1"
+        },
+        {
+          "key": "method",
+          "value": "PID -> HTTPMethod.POST"
+        },
+        {
+          "key": "$1",
+          "value": "schemaID"
+        },
+        {
+          "key": "payload",
+          "value": "document"
+        }
+      ],
+      "result": "mappedDocument"
+    }
+  ]
+}
