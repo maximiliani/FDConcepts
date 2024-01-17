@@ -1,0 +1,15 @@
+{
+    "PID -> kernelInformationProfile -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String": "PID -> Medical Imaging Data Type Information Profile",
+    "PID -> e-tag -INH-> PID -> md5sum -INH-> PID -> checksum -INH-> PID -> String": "723140e4864011bdf1fbc66698a0f041",
+    "PID -> dateCreated -INH-> PID -> date-time-rfc3339": "2023-06-21T00:00:00+00:00",
+    "PID -> digitalObjectLocation -INH-> PID -> URL -INH-> PID -> String": ["https://b2share.eudat.eu/api/files/aeb2c0c5-38dd-4863-ba3a-c075e7a658dd/Phantom_E12_P1_EnIm1.dcm", "https://b2share.eudat.eu/"],
+    "PID -> version -INH-> PID -> version-number -INH-> PID -> String": "1.0.0",
+    "PID -> license -INH-> PID -> licenseURL -INH-> PID -> URL -INH-> PID -> String": "https://creativecommons.org/licenses/by/4.0/",
+    "PID -> contact -INH-> PID -> URL -INH-> PID -> String": "https://orcid.org/0009-0007-0235-4995",
+    "PID -> hasMetadata -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String": "21.11152/a296e244-2f53-4b49-bbaa-682e707db375",
+    "PID -> MedicalImageModality -INH-> PID -> String": "MR",
+    "PID -> imageCompressionDetails -INH-> PID -> String": "lossless",
+    "PID -> fileMagnitude -INH-> PID -> String": "1E5-2E5",
+    "PID -> contrastType -INH-> PID -> String": "T2-weighted",
+    "PID -> mimeType -INH-> PID -> media-type-IANA-application -INH-> PID -> media-type-IANA -INH-> PID -> String": "dicom"
+}
