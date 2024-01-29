@@ -1,0 +1,57 @@
+{
+  "title": "HTTP Request",
+  "description": "blablub",
+  "requiredAttributes": [
+    {
+      "key": "url",
+      "type": "PID -> URL"
+    },
+    {
+      "key": "method",
+      "type": "PID -> HTTPMethod"
+    }
+  ],
+  "optionalAttributes": [
+    {
+      "key": "headers",
+      "type": [
+        {
+          "key": "string",
+          "value": "string"
+        }
+      ],
+      "default": []
+    },
+    {
+      "key": "cookies",
+      "type": [
+        {
+          "key": "string",
+          "value": "string"
+        }
+      ],
+      "default": []
+    },
+    {
+      "key": "sessionStorage",
+      "type": [
+        {
+          "key": "string",
+          "value": "string"
+        }
+      ],
+      "default": []
+    },
+    {
+      "key": "body",
+      "type": "any OR PID -> JSON",
+      "default": ""
+    }
+  ],
+  "adapters": [
+    "PID -> CURL",
+    "PID -> JSFetchAPI",
+    "PID -> JavaHTTPClient",
+    "..."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Python script",
+  "description": "not specified",
+  "requiredAttributes": [
+    {
+      "key": "scriptLocation",
+      "type": "PID -> URL"
+    },
+    {
+      "key": "entryPoint",
+      "type": "string"
+    }
+  ],
+  "optionalAttributes": [
+    {
+      "key": "attributes",
+      "type": [
+        {
+          "key": "string",
+          "value": "string"
+        }
+      ],
+      "defaultValue": []
+    }
+  ],
+  "adapters": [
+    "PID -> PythonExec",
+    "PID -> JSPyScript",
+    "PID -> WASM"
+  ]
+}
