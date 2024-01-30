@@ -17,7 +17,7 @@ Examples of JSON Documents for different types of elements in the FAIR Data Ecos
 
 | Symbol      | Meaning                                 | Example                                                                 |
 |-------------|-----------------------------------------|-------------------------------------------------------------------------|
-| `PID ->`    | A PID pointing to thing after it        | `PID -> Schema`                                                         |
+| `PID ->`    | A PID pointing to thing after it        | `PID -> Schema` OR `PID->Data Type`                                     |
 | `-INH->`    | Something inherits from another thing   | `SHA256 -INH-> Checksum`<br/> `HTTPLocation -INH-> URL -INH-> Location` |
 | `AND_SO_ON` | More concrete definition somewhere else | `A OR B OR C AND_SO_ON`                                                 |
 | `OR`        | Describes an alternative                | `any OR PID->JSON`                                                      |

@@ -29,7 +29,7 @@
       ]
     },
     "title": {
-      "title": "Title of this operation",
+      "title": "Title",
       "description": "A humanreadable title that describes this operation",
       "type": "string",
       "examples": [
@@ -37,7 +37,7 @@
       ]
     },
     "description": {
-      "title": "Description of this operation",
+      "title": "Description",
       "description": "A humanreadable description of this operation",
       "type": "string",
       "examples": [
@@ -45,7 +45,7 @@
       ]
     },
     "createdAt": {
-      "title": "Creation date of this operation",
+      "title": "Creation date",
       "description": "The date when this operation was created in RFC 3339 format.",
       "type": "string",
       "examples": [
@@ -57,8 +57,8 @@
       "description": "Some provenance (especially contact information) about the creators/maintainers of this operation",
       "type": "array",
       "items": {
-        "title": "A Schema",
-        "description": "An explanation about the purpose of this instance.",
+        "title": "Provenance information",
+        "description": "Information about one person, group, or organization.",
         "type": "object",
         "required": [
           "type"
@@ -131,7 +131,7 @@
       "uniqueItems": false
     },
     "license": {
-      "title": "license of this operation",
+      "title": "License",
       "description": "The license of this operation. It is a PID or URL pointing to a license.",
       "type": "string",
       "examples": [
@@ -139,7 +139,7 @@
       ]
     },
     "inputTypes": {
-      "title": "Input types of the operation",
+      "title": "Input types",
       "description": "This field defines all inputs needed for a successful execution of this operation. All listed inputs are mandatory to fulfill when executing an operation.",
       "type": "array",
       "items": {
@@ -206,7 +206,7 @@
       "uniqueItems": false
     },
     "outputTypes": {
-      "title": "Expected outputs of the operation",
+      "title": "Expected output types",
       "description": "This field describes a list of all the outputs created during a successful execution of an operation. The schema is pretty much consistent to the input types.",
       "type": "array",
       "items": {
@@ -263,7 +263,7 @@
       "uniqueItems": false
     },
     "execution": {
-      "title": "The schema of the execution of this operation",
+      "title": "Definition of the execution",
       "description": "This field describes the execution of an operation. It varies depending on the type of operation. For a single operation, it is a single object. For a workflow, it is an array of objects. The schema of the objects is the same for both types of operations.",
       "type": "array",
       "items": {
