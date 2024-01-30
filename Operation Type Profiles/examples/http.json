@@ -3,47 +3,47 @@
   "description": "blablub",
   "requiredAttributes": [
     {
-      "key": "url",
+      "name": "url",
       "type": "PID -> URL"
     },
     {
-      "key": "method",
+      "name": "method",
       "type": "PID -> HTTPMethod"
     }
   ],
   "optionalAttributes": [
     {
-      "key": "headers",
+      "name": "headers",
       "type": [
         {
-          "key": "string",
+          "name": "string",
           "value": "string"
         }
       ],
       "default": []
     },
     {
-      "key": "cookies",
+      "name": "cookies",
       "type": [
         {
-          "key": "string",
+          "name": "string",
           "value": "string"
         }
       ],
       "default": []
     },
     {
-      "key": "sessionStorage",
+      "name": "sessionStorage",
       "type": [
         {
-          "key": "string",
+          "name": "string",
           "value": "string"
         }
       ],
       "default": []
     },
     {
-      "key": "body",
+      "name": "body",
       "type": "any OR PID -> JSON",
       "default": ""
     }

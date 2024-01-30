@@ -18,17 +18,17 @@
   "inputTypes": [
     {
       "key": "PID -> ORCiD",
-      "name": "orcid"
+      "internal_reference": "orcid"
     },
     {
       "key": "ENV -> APIKey",
-      "name": "apiKey"
+      "internal_reference": "apiKey"
     }
   ],
   "outputTypes": [
     {
       "type": "PID -> ORCiDProfile",
-      "name": "profile"
+      "internal_reference": "profile"
     }
   ],
   "requiredAttributes": [],
@@ -40,7 +40,7 @@
       "attributes": [
         {
           "key": "url",
-          "value": "https://orcid.org/api/$1&apiKey=$2"
+          "value": "https://orcid.org/api/$1&apiKey=${{apiKey}}"
         },
         {
           "key": "method",
@@ -48,14 +48,10 @@
         },
         {
           "key": "$1",
-          "value": "PID -> ORCID"
-        },
-        {
-          "key": "$2",
-          "value": "PID -> APIKey"
+          "value": "${{orcid}}"
         }
       ],
-      "result": "profile"
+      "result_internal_reference": "profile"
     }
   ]
 }

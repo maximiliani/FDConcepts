@@ -1,12 +1,57 @@
 {
-    "PID -> kernelInformationProfile -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String": "PID -> FDO Data Operation Type Information Profile",
-    "PID -> dateCreated -INH-> PID -> date-time-rfc3339": "2023-11-02T00:00:00+00:00",
-    "PID -> digitalObjectLocation -INH-> PID -> URL -INH-> PID -> String": "http://127.0.0.1:5002/dicom_to_labelled_tensor",
-    "PID -> version -INH-> PID -> version-number -INH-> PID -> String": "1.0.0",
-    "PID -> license -INH-> PID -> licenseURL -INH-> PID -> URL -INH-> PID -> String": "https://creativecommons.org/licenses/by/4.0/",
-    "PID -> operationName -INH-> PID -> unicode-string -INH-> PID -> String": "dicom_to_labelled_tensor",
-    "PID -> requiredInputType -INH-> [PID -> attributeKey -INH-> PID -> Handle-Identifier-ASCII, PID -> attributeValue -INH-> PID -> String]": [{"PID -> attributeKey": ["PID -> media-type-IANA-application", "PID -> digitalObjectLocation"], "PID -> attributeValue": ["dicom", "https://b2share.eudat.eu/"]}, {"PID -> attributeKey": ["PID -> media-type-IANA-application", "PID -> digitalObjectLocation"], "PID -> attributeValue": ["dicom", "https://zenodo.org"]}],
-    "PID -> expectedOutputType -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String": "PID -> Labeled Image Tensor",
-    "PID -> externalRecordDependentAccessProtocol -INH-> PID -> operationAccessProtocol -INH-> PID -> httpProtocol -INH-> [PID -> statusCode -INH-> [PID -> statusCodeHandle -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String, PID -> statusCodeString -INH-> PID -> String], PID -> httpParameter -INH-> [PID -> parameterKey -INH-> PID -> String, PID -> parameterValueType -INH-> PID -> Handle-Identifier-ASCII, PID -> mandatory -INH-> PID -> Boolean], PID -> httpHeaderProperty -INH-> [PID -> headerKey -INH-> PID -> String, PID -> headerValue -INH-> PID -> String], PID -> httpFileProperty -INH-> [PID -> fileKey -INH-> PID -> String, PID -> fileType -INH-> PID -> media-type-IANA -INH-> PID -> String], PID -> httpDataProperty -INH-> [PID -> dataKey -INH-> PID -> String, PID -> dataValueType -INH-> PID -> Handle-Identifier-ASCII, PID -> mandatory -INH-> PID -> Boolean], PID -> httpDataSchema -INH-> PID -> Handle-Identifier-ASCII, PID -> requiresAuthentication -INH-> PID -> Boolean, PID -> httpMethod -INH-> PID -> String]": 
-  {"PID -> operationAccessProtocol": {"PID -> httpProtocol": {"PID -> statusCode": {"PID -> statusCodeString": ["200: Image successfully converted.", "400: Image conversion failed."]}, " PID -> requiresAuthentication": "False", " PID -> httpMethod": "POST", "PID -> httpDataProperty": [{"PID -> dataKey": "uri", "PID -> dataValueType": "21.T11148/b8457812905b83046284", "PID -> mandatory": "True"}, {"PID -> dataKey": "contrast", "PID -> dataValueType": "21.T11148/29992ec6379e6181fbf1", "PID -> mandatory": "True"}]}}}
+  "PID -> kernelInformationProfile -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String": "PID -> FDO Data Operation Type Information Profile",
+  "PID -> dateCreated -INH-> PID -> date-time-rfc3339": "2023-11-02T00:00:00+00:00",
+  "PID -> digitalObjectLocation -INH-> PID -> URL -INH-> PID -> String": "http://127.0.0.1:5002/dicom_to_labelled_tensor",
+  "PID -> version -INH-> PID -> version-number -INH-> PID -> String": "1.0.0",
+  "PID -> license -INH-> PID -> licenseURL -INH-> PID -> URL -INH-> PID -> String": "https://creativecommons.org/licenses/by/4.0/",
+  "PID -> operationName -INH-> PID -> unicode-string -INH-> PID -> String": "dicom_to_labelled_tensor",
+  "PID -> requiredInputType -INH-> [PID -> attributeKey -INH-> PID -> Handle-Identifier-ASCII, PID -> attributeValue -INH-> PID -> String]": [
+    {
+      "PID -> attributeKey": [
+        "PID -> media-type-IANA-application",
+        "PID -> digitalObjectLocation"
+      ],
+      "PID -> attributeValue": [
+        "dicom",
+        "https://b2share.eudat.eu/"
+      ]
+    },
+    {
+      "PID -> attributeKey": [
+        "PID -> media-type-IANA-application",
+        "PID -> digitalObjectLocation"
+      ],
+      "PID -> attributeValue": [
+        "dicom",
+        "https://zenodo.org"
+      ]
+    }
+  ],
+  "PID -> expectedOutputType -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String": "PID -> Labeled Image Tensor",
+  "PID -> externalRecordDependentAccessProtocol -INH-> PID -> operationAccessProtocol -INH-> PID -> httpProtocol -INH-> [PID -> statusCode -INH-> [PID -> statusCodeHandle -INH-> PID -> Handle-Identifier-ASCII -INH-> PID -> String, PID -> statusCodeString -INH-> PID -> String], PID -> httpParameter -INH-> [PID -> parameterKey -INH-> PID -> String, PID -> parameterValueType -INH-> PID -> Handle-Identifier-ASCII, PID -> mandatory -INH-> PID -> Boolean], PID -> httpHeaderProperty -INH-> [PID -> headerKey -INH-> PID -> String, PID -> headerValue -INH-> PID -> String], PID -> httpFileProperty -INH-> [PID -> fileKey -INH-> PID -> String, PID -> fileType -INH-> PID -> media-type-IANA -INH-> PID -> String], PID -> httpDataProperty -INH-> [PID -> dataKey -INH-> PID -> String, PID -> dataValueType -INH-> PID -> Handle-Identifier-ASCII, PID -> mandatory -INH-> PID -> Boolean], PID -> httpDataSchema -INH-> PID -> Handle-Identifier-ASCII, PID -> requiresAuthentication -INH-> PID -> Boolean, PID -> httpMethod -INH-> PID -> String]": {
+    "PID -> operationAccessProtocol": {
+      "PID -> httpProtocol": {
+        "PID -> statusCode": {
+          "PID -> statusCodeString": [
+            "200: Image successfully converted.",
+            "400: Image conversion failed."
+          ]
+        },
+        " PID -> requiresAuthentication": "False",
+        " PID -> httpMethod": "POST",
+        "PID -> httpDataProperty": [
+          {
+            "PID -> dataKey": "uri",
+            "PID -> dataValueType": "21.T11148/b8457812905b83046284",
+            "PID -> mandatory": "True"
+          },
+          {
+            "PID -> dataKey": "contrast",
+            "PID -> dataValueType": "21.T11148/29992ec6379e6181fbf1",
+            "PID -> mandatory": "True"
+          }
+        ]
+      }
+    }
+  }
 }

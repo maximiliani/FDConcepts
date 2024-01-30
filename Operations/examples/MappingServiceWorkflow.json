@@ -17,20 +17,20 @@
   "inputTypes": [
     {
       "key": "PID -> MPSSchema",
-      "name": "mpsSchema"
+      "internal_reference": "mpsSchema"
     },
     {
       "key": "PID -> MPSPlugin",
-      "name": "mpsPlugin"
+      "internal_reference": "mpsPlugin"
     },
     {
       "key": "PID -> URL",
-      "name": "documentURL"
+      "internal_reference": "documentURL"
     }
   ],
   "outputTypes": {
     "type": "PID -> JSONDocument",
-    "name": "mappedDocument"
+    "internal_reference": "mappedDocument"
   },
   "requiredAttributes": [],
   "execution": [
@@ -41,17 +41,17 @@
         {
           "operation": "PID -> Download file",
           "url": "mpsSchema",
-          "result": "schema"
+          "result_internal_reference": "schema"
         },
         {
           "operation": "PID -> Download file",
           "url": "mpsPlugin",
-          "result": "plugin"
+          "result_internal_reference": "plugin"
         },
         {
           "operation": "PID -> Download file",
           "url": "documentURL",
-          "result": "document"
+          "result_internal_reference": "document"
         }
       ]
     },
@@ -67,7 +67,7 @@
           ]
         }
       ],
-      "result": "mpsURL"
+      "result_internal_reference": "mpsURL"
     },
     {
       "title": "Upload schema to Mapping-Service",
@@ -87,7 +87,7 @@
           "value": "schema"
         }
       ],
-      "result": "schemaID"
+      "result_internal_reference": "schemaID"
     },
     {
       "title": "Map document",
@@ -96,22 +96,18 @@
       "attributes": [
         {
           "key": "url",
-          "value": "mpsURL/mappingExec/$1"
+          "value": "${{mpsURL}}/mappingExec/${{schemaID}}"
         },
         {
           "key": "method",
           "value": "PID -> HTTPMethod.POST"
         },
         {
-          "key": "$1",
-          "value": "schemaID"
-        },
-        {
           "key": "payload",
           "value": "document"
         }
       ],
-      "result": "mappedDocument"
+      "result_internal_reference": "mappedDocument"
     }
   ]
 }

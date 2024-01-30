@@ -4,12 +4,14 @@
       {
         "key": "somePID or someDataType",
         "value": "someValue",
-        "type": "equals OR contains OR startsWith AND_SO_ON"
+        "type": "equals OR contains OR startsWith AND_SO_ON",
+        "internal_reference": "someInternalReference"
       },
       {
         "key": "anotherPID or anotherDataType",
         "value": "anotherValue",
-        "type": "not OR notContains OR notSpecified AND_SO_ON"
+        "type": "not OR notContains OR notSpecified AND_SO_ON",
+        "internal_reference": "anotherInternalReference"
       },
       {
         "values": [

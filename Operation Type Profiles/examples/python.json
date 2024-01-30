@@ -3,17 +3,17 @@
   "description": "not specified",
   "requiredAttributes": [
     {
-      "key": "scriptLocation",
+      "name": "scriptLocation",
       "type": "PID -> URL"
     },
     {
-      "key": "entryPoint",
+      "name": "entryPoint",
       "type": "string"
     }
   ],
   "optionalAttributes": [
     {
-      "key": "attributes",
+      "name": "attributes",
       "type": [
         {
           "key": "string",
