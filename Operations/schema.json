@@ -9,6 +9,7 @@
     "description",
     "createdAt",
     "provenance",
+    "license",
     "inputTypes",
     "outputTypes",
     "requiredAttributes",
@@ -128,6 +129,14 @@
         ]
       ],
       "uniqueItems": false
+    },
+    "license": {
+      "title": "license of this operation",
+      "description": "The license of this operation. It is a PID or URL pointing to a license.",
+      "type": "string",
+      "examples": [
+        "https://creativecommons.org/licenses/by/4.0/"
+      ]
     },
     "inputTypes": {
       "title": "Input types of the operation",
@@ -295,7 +304,9 @@
             "title": "A recursive array of operation steps",
             "description": "This list contains all the steps that are executed in this operation step.",
             "type": "array",
-            "items": { "$ref": "#/properties/execution" },
+            "items": {
+              "$ref": "#/properties/execution"
+            },
             "examples": [
               [
                 {
@@ -631,6 +642,7 @@
       "title": "Map with mapping service",
       "description": "This is a basic",
       "createdAt": "20231115Z1800",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
       "provenance": [
         {
           "type": "orcid",
@@ -744,6 +756,7 @@
       "title": "Get ORCiD Profile Information",
       "description": "This is a basic",
       "createdAt": "20231115Z1800",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
       "provenance": [
         {
           "type": "orcid",
