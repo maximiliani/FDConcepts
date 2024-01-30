@@ -1,6 +1,8 @@
 [back](../README.md)
 # FAIR Digital Operations
 
+## Schema: [FD Operation schema](schema.json)
+
 ## Example 1: [Simple HTTP Request](examples/SimpleHTTP.json)
 
 ## Example 2: [Mapping Service Workflow](examples/MappingServiceWorkflow.json)
