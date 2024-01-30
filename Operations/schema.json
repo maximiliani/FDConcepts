@@ -1,0 +1,800 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "FAIR Digital Operation",
+  "description": "A schema for machine actionable operations based on strongly typed FAIR data.",
+  "type": "object",
+  "required": [
+    "type",
+    "title",
+    "description",
+    "createdAt",
+    "provenance",
+    "inputTypes",
+    "outputTypes",
+    "requiredAttributes",
+    "execution"
+  ],
+  "properties": {
+    "type": {
+      "title": "Type of operation",
+      "description": "Differences between single operations and workflows",
+      "type": "string",
+      "examples": [
+        "workflow"
+      ],
+      "enum": [
+        "operation",
+        "workflow"
+      ]
+    },
+    "title": {
+      "title": "Title of this operation",
+      "description": "A humanreadable title that describes this operation",
+      "type": "string",
+      "examples": [
+        "Map with mapping service"
+      ]
+    },
+    "description": {
+      "title": "Description of this operation",
+      "description": "A humanreadable description of this operation",
+      "type": "string",
+      "examples": [
+        "This is a basic operation workflow that enables machine actionable mapping by downloading all necessary information, starting a Docker container of the kit-data-manager mapping-service and performing the mapping."
+      ]
+    },
+    "createdAt": {
+      "title": "Creation date of this operation",
+      "description": "The date when this operation was created in RFC 3339 format.",
+      "type": "string",
+      "examples": [
+        "20231115Z1800"
+      ]
+    },
+    "provenance": {
+      "title": "Provenance information",
+      "description": "Some provenance (especially contact information) about the creators/maintainers of this operation",
+      "type": "array",
+      "items": {
+        "title": "A Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "title": "Type of the provenance information",
+            "description": "The type is meant to make the providence information more machine-readable.",
+            "type": "string",
+            "examples": [
+              "orcid",
+              "plain"
+            ],
+            "enum": [
+              "orcid",
+              "plain",
+              "other"
+            ]
+          },
+          "url": {
+            "title": "URL",
+            "description": "A URL referring to a person, group, or organization. When ORCiD is chosen as a type, this refers to the ORCiD profile.",
+            "type": "string",
+            "examples": [
+              "https://orcid.org/0009-0005-2800-4833"
+            ]
+          },
+          "name": {
+            "title": "Name",
+            "description": "The name of a person, group, or organization",
+            "type": "string",
+            "examples": [
+              "Nicolas Blumenröhr"
+            ]
+          },
+          "email": {
+            "title": "E-Mail address",
+            "description": "An email address for a person, group, or organization",
+            "type": "string",
+            "examples": [
+              "nicolas.blumenroehr@kit.edu"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "type": "orcid",
+            "url": "https://orcid.org/0009-0005-2800-4833"
+          },
+          {
+            "type": "plain",
+            "name": "Nicolas Blumenröhr",
+            "email": "nicolas.blumenroehr@kit.edu"
+          }
+        ]
+      },
+      "examples": [
+        [
+          {
+            "type": "orcid",
+            "url": "https://orcid.org/0009-0005-2800-4833"
+          },
+          {
+            "type": "plain",
+            "name": "Nicolas Blumenröhr",
+            "email": "nicolas.blumenroehr@kit.edu"
+          }
+        ]
+      ],
+      "uniqueItems": false
+    },
+    "inputTypes": {
+      "title": "Input types of the operation",
+      "description": "This field defines all inputs needed for a successful execution of this operation. All listed inputs are mandatory to fulfill when executing an operation.",
+      "type": "array",
+      "items": {
+        "title": "Input type",
+        "description": "An input type consists out of a key and an internal reference.",
+        "type": "object",
+        "required": [
+          "key",
+          "internal_reference"
+        ],
+        "properties": {
+          "key": {
+            "title": "Key/Data Type",
+            "description": "The key property refers to the key in the FAIR Digital Object, Type Profile or Data Type and is by design a PID. Furthermore, this relation is modeled in IDORIS.",
+            "type": "string",
+            "examples": [
+              "PID->MPSSchema",
+              "PID->MPSPlugin",
+              "PID->URL"
+            ]
+          },
+          "internal_reference": {
+            "title": "Name of the internal reference",
+            "description": "An internal reference is used to refer to the value linked to the key within the operation. It is usually a human-readable name because it is not exposed outside this operation. To insert a value referenced by such a internal reference into a parameter, use ${{reference_name}}.",
+            "type": "string",
+            "examples": [
+              "mpsSchema",
+              "mpsPlugin",
+              "documentURL"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "key": "PID->MPSSchema",
+            "internal_reference": "mpsSchema"
+          },
+          {
+            "key": "PID->MPSPlugin",
+            "internal_reference": "mpsPlugin"
+          },
+          {
+            "key": "PID->URL",
+            "internal_reference": "documentURL"
+          }
+        ]
+      },
+      "examples": [
+        [
+          {
+            "key": "PID->MPSSchema",
+            "internal_reference": "mpsSchema"
+          },
+          {
+            "key": "PID->MPSPlugin",
+            "internal_reference": "mpsPlugin"
+          },
+          {
+            "key": "PID->URL",
+            "internal_reference": "documentURL"
+          }
+        ]
+      ],
+      "uniqueItems": false
+    },
+    "outputTypes": {
+      "title": "Expected outputs of the operation",
+      "description": "This field describes a list of all the outputs created during a successful execution of an operation. The schema is pretty much consistent to the input types.",
+      "type": "array",
+      "items": {
+        "title": "Input type",
+        "description": "An input type consists out of a key and an internal reference.",
+        "type": "object",
+        "required": [
+          "key",
+          "result_internal_reference"
+        ],
+        "properties": {
+          "key": {
+            "title": "Key/Data Type",
+            "description": "The key property refers to the key in the FAIR Digital Object, Type Profile or Data Type and is by design a PID. Furthermore, this relation is modeled in IDORIS.",
+            "type": "string",
+            "examples": [
+              "PID->JSONDocument"
+            ]
+          },
+          "result_internal_reference": {
+            "title": "Name of the internal reference for the result",
+            "description": "An result internal reference is used to refer to the result of an operation. It is usually a human-readable name because it is not exposed outside this operation.",
+            "type": "string",
+            "examples": [
+              "mappedDocument"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "type": "PID->JSONDocument",
+            "internal_reference": "mappedDocument"
+          }
+        ]
+      },
+      "examples": [
+        [
+          {
+            "type": "PID->JSONDocument",
+            "internal_reference": "mappedDocument"
+          }
+        ]
+      ],
+      "uniqueItems": false
+    },
+    "requiredAttributes": {
+      "title": "This isn't used/specified yet",
+      "description": "An explanation about the purpose of this instance.",
+      "type": "array",
+      "items": {},
+      "examples": [
+        []
+      ],
+      "uniqueItems": false
+    },
+    "execution": {
+      "title": "The schema of the execution of this operation",
+      "description": "This field describes the execution of an operation. It varies depending on the type of operation. For a single operation, it is a single object. For a workflow, it is an array of objects. The schema of the objects is the same for both types of operations.",
+      "type": "array",
+      "items": {
+        "title": "Operation step",
+        "description": "An operation step describes a single step in the execution of an operation it can be called on recursively to enable complexly folded operation.",
+        "type": "object",
+        "required": [
+          "title",
+          "mode",
+          "result_internal_reference"
+        ],
+        "properties": {
+          "title": {
+            "title": "Title of the operation step",
+            "description": "A human-readable title that describes this operation step.",
+            "type": "string",
+            "examples": [
+              "Download files",
+              "Start mapping service",
+              "Upload schema to Mapping-Service",
+              "Map document"
+            ]
+          },
+          "mode": {
+            "title": "Mode of the operation step",
+            "description": "The mode of an operation step can be either async or sync. Async means that all the contained operation steps are executed asynchronously, and all contained steps can be executed in parallel. Sync means that the operation steps are executed in the exact order they are specified in.",
+            "type": "string",
+            "enum": [
+              "async",
+              "sync"
+            ],
+            "examples": [
+              "async",
+              "sync"
+            ]
+          },
+          "steps": {
+            "title": "A recursive array of operation steps",
+            "description": "This list contains all the steps that are executed in this operation step.",
+            "type": "array",
+            "items": { "$ref": "#/properties/execution" },
+            "examples": [
+              [
+                {
+                  "operation": "PID->Download file",
+                  "url": "mpsSchema",
+                  "result_internal_reference": "schema"
+                },
+                {
+                  "operation": "PID->Download file",
+                  "url": "mpsPlugin",
+                  "result_internal_reference": "plugin"
+                },
+                {
+                  "operation": "PID->Download file",
+                  "url": "documentURL",
+                  "result_internal_reference": "document"
+                }
+              ]
+            ],
+            "uniqueItems": false
+          },
+          "operation": {
+            "title": "Reference to an operation",
+            "description": "This field is used to reference an operation that is executed in this operation step. Usually, the value of this field is a PID.",
+            "type": "string",
+            "examples": [
+              "PID->DockerMappingService"
+            ]
+          },
+          "attributes": {
+            "title": "Attributes of the operation",
+            "description": "This field describes the attributes of an operation. It is a list of key-value pairs.",
+            "type": "array",
+            "items": {
+              "title": "Attribute",
+              "description": "An attribute is a key-value pair. The key is usually a PID, and the value is a string or an array of strings. The value can also be a reference to an internal reference.",
+              "type": "object",
+              "required": [
+                "key",
+                "value"
+              ],
+              "properties": {
+                "key": {
+                  "title": "Key/Name of the attribute",
+                  "description": "Name how this attribute is called in the FD Operation or Operation Type Profile.",
+                  "type": "string",
+                  "examples": [
+                    "plugins",
+                    "url",
+                    "method",
+                    "payload"
+                  ]
+                },
+                "value": {
+                  "title": "Value of the attribute",
+                  "description": "The value of the attribute can be anything. The value can also be an internal reference.",
+                  "type": [
+                    "object",
+                    "array",
+                    "string",
+                    "boolean",
+                    "number",
+                    "null"
+                  ],
+                  "examples": [
+                    [
+                      "plugin"
+                    ],
+                    "mpsURL",
+                    "PID->HTTPMethod.POST",
+                    "schema",
+                    "${{mpsURL}}/mappingExec/${{schemaID}}",
+                    "document"
+                  ],
+                  "uniqueItems": false
+                }
+              },
+              "examples": [
+                {
+                  "key": "plugins",
+                  "value": [
+                    "plugin"
+                  ]
+                },
+                {
+                  "key": "url",
+                  "value": "mpsURL"
+                },
+                {
+                  "key": "method",
+                  "value": "PID->HTTPMethod.POST"
+                },
+                {
+                  "key": "payload",
+                  "value": "schema"
+                },
+                {
+                  "key": "url",
+                  "value": "${{mpsURL}}/mappingExec/${{schemaID}}"
+                },
+                {
+                  "key": "method",
+                  "value": "PID->HTTPMethod.POST"
+                },
+                {
+                  "key": "payload",
+                  "value": "document"
+                }
+              ]
+            },
+            "examples": [
+              [
+                {
+                  "key": "plugins",
+                  "value": [
+                    "plugin"
+                  ]
+                }
+              ],
+              [
+                {
+                  "key": "url",
+                  "value": "mpsURL"
+                },
+                {
+                  "key": "method",
+                  "value": "PID->HTTPMethod.POST"
+                },
+                {
+                  "key": "payload",
+                  "value": "schema"
+                }
+              ],
+              [
+                {
+                  "key": "url",
+                  "value": "${{mpsURL}}/mappingExec/${{schemaID}}"
+                },
+                {
+                  "key": "method",
+                  "value": "PID->HTTPMethod.POST"
+                },
+                {
+                  "key": "payload",
+                  "value": "document"
+                }
+              ]
+            ],
+            "uniqueItems": false
+          },
+          "result_internal_reference": {
+            "title": "Internal reference to the result",
+            "description": "This field is used to reference the result of an operation. It is usually a human-readable name because it is not exposed outside this operation.",
+            "type": "string",
+            "examples": [
+              "mpsURL",
+              "schemaID",
+              "mappedDocument"
+            ]
+          },
+          "operationTypeProfile": {
+            "title": "Reference to an operation type profile",
+            "description": "This field is used to reference an operation type profile that is executed in this operation step. Usually, the value of this field is a PID.",
+            "type": "string",
+            "examples": [
+              "PID->HTTP"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "title": "Download files",
+            "mode": "async",
+            "steps": [
+              {
+                "operation": "PID->Download file",
+                "url": "mpsSchema",
+                "result_internal_reference": "schema"
+              },
+              {
+                "operation": "PID->Download file",
+                "url": "mpsPlugin",
+                "result_internal_reference": "plugin"
+              },
+              {
+                "operation": "PID->Download file",
+                "url": "documentURL",
+                "result_internal_reference": "document"
+              }
+            ]
+          },
+          {
+            "title": "Start mapping service",
+            "mode": "sync",
+            "operation": "PID->DockerMappingService",
+            "attributes": [
+              {
+                "key": "plugins",
+                "value": [
+                  "plugin"
+                ]
+              }
+            ],
+            "result_internal_reference": "mpsURL"
+          },
+          {
+            "title": "Upload schema to Mapping-Service",
+            "mode": "sync",
+            "operationTypeProfile": "PID->HTTP",
+            "attributes": [
+              {
+                "key": "url",
+                "value": "mpsURL"
+              },
+              {
+                "key": "method",
+                "value": "PID->HTTPMethod.POST"
+              },
+              {
+                "key": "payload",
+                "value": "schema"
+              }
+            ],
+            "result_internal_reference": "schemaID"
+          },
+          {
+            "title": "Map document",
+            "mode": "sync",
+            "operationTypeProfile": "PID->HTTP",
+            "attributes": [
+              {
+                "key": "url",
+                "value": "${{mpsURL}}/mappingExec/${{schemaID}}"
+              },
+              {
+                "key": "method",
+                "value": "PID->HTTPMethod.POST"
+              },
+              {
+                "key": "payload",
+                "value": "document"
+              }
+            ],
+            "result_internal_reference": "mappedDocument"
+          }
+        ]
+      },
+      "examples": [
+        [
+          {
+            "title": "Download files",
+            "mode": "async",
+            "steps": [
+              {
+                "operation": "PID->Download file",
+                "url": "mpsSchema",
+                "result_internal_reference": "schema"
+              },
+              {
+                "operation": "PID->Download file",
+                "url": "mpsPlugin",
+                "result_internal_reference": "plugin"
+              },
+              {
+                "operation": "PID->Download file",
+                "url": "documentURL",
+                "result_internal_reference": "document"
+              }
+            ]
+          },
+          {
+            "title": "Start mapping service",
+            "mode": "sync",
+            "operation": "PID->DockerMappingService",
+            "attributes": [
+              {
+                "key": "plugins",
+                "value": [
+                  "plugin"
+                ]
+              }
+            ],
+            "result_internal_reference": "mpsURL"
+          },
+          {
+            "title": "Upload schema to Mapping-Service",
+            "mode": "sync",
+            "operationTypeProfile": "PID->HTTP",
+            "attributes": [
+              {
+                "key": "url",
+                "value": "mpsURL"
+              },
+              {
+                "key": "method",
+                "value": "PID->HTTPMethod.POST"
+              },
+              {
+                "key": "payload",
+                "value": "schema"
+              }
+            ],
+            "result_internal_reference": "schemaID"
+          },
+          {
+            "title": "Map document",
+            "mode": "sync",
+            "operationTypeProfile": "PID->HTTP",
+            "attributes": [
+              {
+                "key": "url",
+                "value": "${{mpsURL}}/mappingExec/${{schemaID}}"
+              },
+              {
+                "key": "method",
+                "value": "PID->HTTPMethod.POST"
+              },
+              {
+                "key": "payload",
+                "value": "document"
+              }
+            ],
+            "result_internal_reference": "mappedDocument"
+          }
+        ]
+      ],
+      "uniqueItems": false
+    }
+  },
+  "examples": [
+    {
+      "type": "workflow",
+      "title": "Map with mapping service",
+      "description": "This is a basic",
+      "createdAt": "20231115Z1800",
+      "provenance": [
+        {
+          "type": "orcid",
+          "url": "https://orcid.org/0009-0005-2800-4833"
+        },
+        {
+          "type": "plain",
+          "name": "Nicolas Blumenröhr",
+          "email": "nicolas.blumenroehr@kit.edu"
+        }
+      ],
+      "inputTypes": [
+        {
+          "key": "PID->MPSSchema",
+          "internal_reference": "mpsSchema"
+        },
+        {
+          "key": "PID->MPSPlugin",
+          "internal_reference": "mpsPlugin"
+        },
+        {
+          "key": "PID->URL",
+          "internal_reference": "documentURL"
+        }
+      ],
+      "outputTypes": {
+        "type": "PID->JSONDocument",
+        "internal_reference": "mappedDocument"
+      },
+      "requiredAttributes": [],
+      "execution": [
+        {
+          "title": "Download files",
+          "mode": "async",
+          "steps": [
+            {
+              "operation": "PID->Download file",
+              "url": "mpsSchema",
+              "result_internal_reference": "schema"
+            },
+            {
+              "operation": "PID->Download file",
+              "url": "mpsPlugin",
+              "result_internal_reference": "plugin"
+            },
+            {
+              "operation": "PID->Download file",
+              "url": "documentURL",
+              "result_internal_reference": "document"
+            }
+          ]
+        },
+        {
+          "title": "Start mapping service",
+          "mode": "sync",
+          "operation": "PID->DockerMappingService",
+          "attributes": [
+            {
+              "key": "plugins",
+              "value": [
+                "plugin"
+              ]
+            }
+          ],
+          "result_internal_reference": "mpsURL"
+        },
+        {
+          "title": "Upload schema to Mapping-Service",
+          "mode": "sync",
+          "operationTypeProfile": "PID->HTTP",
+          "attributes": [
+            {
+              "key": "url",
+              "value": "mpsURL"
+            },
+            {
+              "key": "method",
+              "value": "PID->HTTPMethod.POST"
+            },
+            {
+              "key": "payload",
+              "value": "schema"
+            }
+          ],
+          "result_internal_reference": "schemaID"
+        },
+        {
+          "title": "Map document",
+          "mode": "sync",
+          "operationTypeProfile": "PID->HTTP",
+          "attributes": [
+            {
+              "key": "url",
+              "value": "${{mpsURL}}/mappingExec/${{schemaID}}"
+            },
+            {
+              "key": "method",
+              "value": "PID->HTTPMethod.POST"
+            },
+            {
+              "key": "payload",
+              "value": "document"
+            }
+          ],
+          "result_internal_reference": "mappedDocument"
+        }
+      ]
+    },
+    {
+      "type": "operation",
+      "title": "Get ORCiD Profile Information",
+      "description": "This is a basic",
+      "createdAt": "20231115Z1800",
+      "provenance": [
+        {
+          "type": "orcid",
+          "url": "https://orcid.org/0009-0005-2800-4833"
+        },
+        {
+          "type": "plain",
+          "name": "Nicolas Blumenröhr",
+          "email": "nicolas.blumenroehr@kit.edu"
+        }
+      ],
+      "executableFDOperationTypes": "PID -> REST",
+      "inputTypes": [
+        {
+          "key": "PID -> ORCiD",
+          "internal_reference": "orcid"
+        },
+        {
+          "key": "ENV -> APIKey",
+          "internal_reference": "apiKey"
+        }
+      ],
+      "outputTypes": [
+        {
+          "type": "PID -> ORCiDProfile",
+          "result_internal_reference": "profile"
+        }
+      ],
+      "requiredAttributes": [],
+      "execution": [
+        {
+          "title": "Get profile data from ORCID.org API",
+          "mode": "sync",
+          "operationTypeProfile": "PID -> HTTP",
+          "attributes": [
+            {
+              "key": "url",
+              "value": "https://orcid.org/api/$1&apiKey=${{apiKey}}"
+            },
+            {
+              "key": "method",
+              "value": "PID -> HTTPMethod.GET"
+            },
+            {
+              "key": "$1",
+              "value": "${{orcid}}"
+            }
+          ],
+          "result_internal_reference": "profile"
+        }
+      ]
+    }
+  ]
+}

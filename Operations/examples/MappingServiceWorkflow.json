@@ -30,7 +30,7 @@
   ],
   "outputTypes": {
     "type": "PID -> JSONDocument",
-    "internal_reference": "mappedDocument"
+    "result_internal_reference": "mappedDocument"
   },
   "requiredAttributes": [],
   "execution": [
