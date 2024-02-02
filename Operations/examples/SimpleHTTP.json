@@ -1,5 +1,4 @@
 {
-  "type": "workflow",
   "title": "Get ORCiD Profile Information",
   "description": "This is a basic",
   "createdAt": "20231115Z1800",
@@ -28,10 +27,9 @@
   ],
   "environment": [
     {
-      "pid": "PID_>ORCiDAPIKey",
+      "pid": "PID->ORCiDAPIKey",
       "internal_reference": "apiKey",
-      "description": "The API Key for the ORCiD API",
-      "type": "string"
+      "description": "The API Key for the ORCiD API"
     }
   ],
   "execution": [
