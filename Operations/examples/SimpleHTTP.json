@@ -14,7 +14,6 @@
       "email": "nicolas.blumenroehr@kit.edu"
     }
   ],
-  "executableFDOperationTypes": "PID -> REST",
   "executableOn": [
     {
       "pid": "PID->ORCiD",
@@ -63,7 +62,7 @@
           ]
         }
       ],
-      "result_internal_reference": "profile"
+      "internal_reference": "profile"
     }
   ]
 }
