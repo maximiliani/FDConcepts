@@ -1,5 +1,5 @@
 {
-  "type": "operation",
+  "type": "workflow",
   "title": "Get ORCiD Profile Information",
   "description": "This is a basic",
   "createdAt": "20231115Z1800",
@@ -17,7 +17,7 @@
   "executableOn": [
     {
       "pid": "PID->ORCiD",
-      "internal_reference": "orcid"
+      "internal_reference": "orcidURL"
     }
   ],
   "returns": [
@@ -35,6 +35,30 @@
     }
   ],
   "execution": [
+    {
+      "title": "Extract ORCiD ID from ORCiD-URL",
+      "mode": "sync",
+      "operationTypeProfile": "PID -> regex",
+      "attributes": [
+        {
+          "key": "regex",
+          "value": "https://orcid.org/(\\d{4}-\\d{4}-\\d{4}-\\d{3}X?)"
+        },
+        {
+          "key": "input",
+          "value": "${{orcidURL}}"
+        },
+        {
+          "key": "output",
+          "value": [
+            {
+              "group": 1,
+              "internal_reference": "orcid"
+            }
+          ]
+        }
+      ]
+    },
     {
       "title": "Get profile data from ORCID.org API",
       "mode": "sync",
