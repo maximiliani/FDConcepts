@@ -1,6 +1,7 @@
 {
-  "title": "Get ORCiD Profile Information",
-  "description": "This is a basic",
+  "pid": "PID->GetORCiDProfileInformationViaRESTAPI",
+  "title": "Get ORCiD Profile Information via REST API",
+  "description": "This Operation retrieves the profile information of an ORCiD ID via the ORCiD API. The ORCiD number sequence is extracted from the ORCiD-Profile URL. An API Key for the ORCiD API is required and to be set in the environment.",
   "createdAt": "20231115Z1800",
   "provenance": [
     {
@@ -23,6 +24,10 @@
     {
       "pid": "PID->ORCiDProfile",
       "internal_reference": "profile"
+    },
+    {
+      "pid": "PID->HTTPStatusCode",
+      "internal_reference": "status"
     }
   ],
   "environment": [
@@ -39,21 +44,22 @@
       "operationTypeProfile": "PID -> regex",
       "attributes": [
         {
-          "key": "regex",
-          "value": "https://orcid.org/(\\d{4}-\\d{4}-\\d{4}-\\d{3}X?)"
+          "key": "pattern",
+          "value": "https?://orcid.org/(\\d{4}-\\d{4}-\\d{4}-\\d{3}X?)"
+        },
+        {
+          "key": "flavour",
+          "value": "ECMA262"
         },
         {
           "key": "input",
           "value": "${{orcidURL}}"
-        },
+        }
+      ],
+      "output": [
         {
-          "key": "output",
-          "value": [
-            {
-              "group": 1,
-              "internal_reference": "orcid"
-            }
-          ]
+          "key": "groups.1",
+          "internal_reference": "orcid"
         }
       ]
     },
@@ -84,7 +90,16 @@
           ]
         }
       ],
-      "internal_reference": "profile"
+      "output": [
+        {
+          "key": "status",
+          "internal_reference": "status"
+        },
+        {
+          "key": "body",
+          "internal_reference": "profile"
+        }
+      ]
     }
   ]
 }
