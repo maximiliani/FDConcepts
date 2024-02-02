@@ -15,23 +15,26 @@
     }
   ],
   "executableFDOperationTypes": "PID -> REST",
-  "inputTypes": [
+  "executableOn": [
     {
-      "key": "PID -> ORCiD",
+      "pid": "PID->ORCiD",
       "internal_reference": "orcid"
-    },
-    {
-      "key": "ENV -> APIKey",
-      "internal_reference": "apiKey"
     }
   ],
-  "outputTypes": [
+  "returns": [
     {
-      "type": "PID -> ORCiDProfile",
+      "pid": "PID->ORCiDProfile",
       "internal_reference": "profile"
     }
   ],
-  "requiredAttributes": [],
+  "environment": [
+    {
+      "pid": "PID_>ORCiDAPIKey",
+      "internal_reference": "apiKey",
+      "description": "The API Key for the ORCiD API",
+      "type": "string"
+    }
+  ],
   "execution": [
     {
       "title": "Get profile data from ORCID.org API",
@@ -40,15 +43,24 @@
       "attributes": [
         {
           "key": "url",
-          "value": "https://orcid.org/api/$1&apiKey=${{apiKey}}"
+          "value": "https://orcid.org/api/${{orcid}}"
         },
         {
           "key": "method",
           "value": "PID -> HTTPMethod.GET"
         },
         {
-          "key": "$1",
-          "value": "${{orcid}}"
+          "key": "headers",
+          "value": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer ${{apiKey}}"
+            }
+          ]
         }
       ],
       "result_internal_reference": "profile"
