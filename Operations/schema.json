@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": null,
   "title": "FAIR Digital Operation",
   "description": "A schema for machine actionable operations based on strongly typed FAIR data.",
   "type": "object",
@@ -16,49 +17,58 @@
     "execution"
   ],
   "properties": {
-    "type": {
-      "title": "Type of operation",
-      "description": "Differences between single operations and workflows",
-      "type": "string",
-      "examples": [
-        "workflow"
-      ],
-      "enum": [
-        "operation",
-        "workflow"
-      ]
+    "pid": {
+      "title": "PID",
+      "description": "A automatically generated persistent identifier referring to this operation.",
+      "type": "string"
     },
-    "title": {
-      "title": "Title",
-      "description": "A humanreadable title that describes this operation",
+    "name": {
+      "title": "Type Name",
+      "description": "A human readable name for the operation",
       "type": "string",
-      "examples": [
-        "Map with mapping service"
-      ]
+      "maxLength": 128,
+      "pattern": "^([!-~])+$"
     },
     "description": {
       "title": "Description",
-      "description": "A humanreadable description of this operation",
+      "description": "A human readable description of the operation",
       "type": "string",
-      "examples": [
-        "This is a basic operation workflow that enables machine actionable mapping by downloading all necessary information, starting a Docker container of the kit-data-manager mapping-service and performing the mapping."
-      ]
+      "maxLength": 2048,
+      "pattern": "(.|\n)*"
     },
     "createdAt": {
       "title": "Creation date",
       "description": "The date when this operation was created in RFC 3339 format.",
       "type": "string",
+      "format": "datetime",
       "examples": [
-        "20231115Z1800"
+        "2024-ß2-05T12:00:00Z"
       ]
     },
-    "provenance": {
-      "title": "Provenance information",
-      "description": "Some provenance (especially contact information) about the creators/maintainers of this operation",
+    "lastModifiedAt": {
+      "title": "Modification date",
+      "description": "The date when this operation was lastly modified in RFC 3339 format.",
+      "type": "string",
+      "format": "datetime",
+      "examples": [
+        "2024-ß2-05T12:00:01Z"
+      ]
+    },
+    "license": {
+      "title": "License",
+      "description": "The license of this operation. It is a PID or URL pointing to a license.",
+      "type": "string",
+      "examples": [
+        "https://creativecommons.org/licenses/by/4.0/"
+      ]
+    },
+    "contributors": {
+      "title": "Contributors",
+      "description": "Information about the creators/maintainers/contributors.",
       "type": "array",
       "items": {
         "title": "Provenance information",
-        "description": "Information about one person, group, or organization.",
+        "description": "Information about a person, group, or organization.",
         "type": "object",
         "required": [
           "type"
@@ -66,16 +76,17 @@
         "properties": {
           "type": {
             "title": "Type of the provenance information",
-            "description": "The type is meant to make the providence information more machine-readable.",
+            "description": "The type specifies the kind of reference to the subject. It can be a URL, a Handle, an ORCiD, or some plain text.",
             "type": "string",
             "examples": [
-              "orcid",
-              "plain"
+              "Handle",
+              "ORCiD"
             ],
             "enum": [
-              "orcid",
-              "plain",
-              "other"
+              "Handle",
+              "ORCiD",
+              "URL",
+              "Text"
             ]
           },
           "url": {
@@ -101,6 +112,12 @@
             "examples": [
               "nicolas.blumenroehr@kit.edu"
             ]
+          },
+          "details": {
+            "title": "Details",
+            "type": "string",
+            "format": "textarea",
+            "maxLength": 1024
           }
         },
         "examples": [
@@ -129,14 +146,6 @@
         ]
       ],
       "uniqueItems": false
-    },
-    "license": {
-      "title": "License",
-      "description": "The license of this operation. It is a PID or URL pointing to a license.",
-      "type": "string",
-      "examples": [
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
     },
     "inputTypes": {
       "title": "Input types",

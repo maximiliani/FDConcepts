@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": null,
   "title": "FAIR Digital Operation Type Profiles",
   "description": "This schema describes the structure of a FAIR Digital Operation Type Profile. FAIR Digital Operation Type Profiles are used to describe the technology and attributes of a FAIR Digital Operation.",
   "type": "object",
@@ -11,37 +12,58 @@
     "adapters"
   ],
   "properties": {
-    "title": {
-      "title": "Title",
-      "description": "The human-readable title of the FAIR Digital Operation Type Profile.",
+    "pid": {
+      "title": "PID",
+      "description": "A automatically generated persistent identifier referring to this operation type profile.",
+      "type": "string"
+    },
+    "name": {
+      "title": "Type Name",
+      "description": "A human readable name for the operation type profile",
       "type": "string",
-      "examples": [
-        "HTTP Request"
-      ]
+      "maxLength": 128,
+      "pattern": "^([!-~])+$"
     },
     "description": {
       "title": "Description",
-      "description": "A human-readable description of the FAIR Digital Operation Type Profile, the technology it represents and use cases.",
+      "description": "A human readable description of the operation type profile",
       "type": "string",
-      "examples": [
-        "A HTTP Request is a request to a HTTP server. It is used to retrieve data from a server or to send data to a server. There are different HTTP methods, which can be used to specify the type of request. The most common HTTP methods are GET, POST, PUT and DELETE."
-      ]
+      "maxLength": 2048,
+      "pattern": "(.|\n)*"
     },
     "createdAt": {
       "title": "Creation date",
-      "description": "The date when this Operation Type Profile was created in RFC 3339 format.",
+      "description": "The date when this operation type profile was created in RFC 3339 format.",
       "type": "string",
+      "format": "datetime",
       "examples": [
-        "20231115Z1800"
+        "2024-ß2-05T12:00:00Z"
       ]
     },
-    "provenance": {
-      "title": "Provenance information",
-      "description": "Some provenance (especially contact information) about the creators/maintainers of this FDOTP",
+    "lastModifiedAt": {
+      "title": "Modification date",
+      "description": "The date when this operation type profile was lastly modified in RFC 3339 format.",
+      "type": "string",
+      "format": "datetime",
+      "examples": [
+        "2024-ß2-05T12:00:01Z"
+      ]
+    },
+    "license": {
+      "title": "License",
+      "description": "The license of this operation type profile. It is a PID or URL pointing to a license.",
+      "type": "string",
+      "examples": [
+        "https://creativecommons.org/licenses/by/4.0/"
+      ]
+    },
+    "contributors": {
+      "title": "Contributors",
+      "description": "Information about the creators/maintainers/contributors.",
       "type": "array",
       "items": {
         "title": "Provenance information",
-        "description": "Provenance information about one creators/maintainers of this FDOTP",
+        "description": "Information about a person, group, or organization.",
         "type": "object",
         "required": [
           "type"
@@ -49,16 +71,17 @@
         "properties": {
           "type": {
             "title": "Type of the provenance information",
-            "description": "The type is meant to make the providence information more machine-readable.",
+            "description": "The type specifies the kind of reference to the subject. It can be a URL, a Handle, an ORCiD, or some plain text.",
             "type": "string",
             "examples": [
-              "orcid",
-              "plain"
+              "Handle",
+              "ORCiD"
             ],
             "enum": [
-              "orcid",
-              "plain",
-              "other"
+              "Handle",
+              "ORCiD",
+              "URL",
+              "Text"
             ]
           },
           "url": {
@@ -84,6 +107,12 @@
             "examples": [
               "nicolas.blumenroehr@kit.edu"
             ]
+          },
+          "details": {
+            "title": "Details",
+            "type": "string",
+            "format": "textarea",
+            "maxLength": 1024
           }
         },
         "examples": [
@@ -112,14 +141,6 @@
         ]
       ],
       "uniqueItems": false
-    },
-    "license": {
-      "title": "License",
-      "description": "The license of this FDOTP. It is a PID or URL pointing to a license.",
-      "type": "string",
-      "examples": [
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
     },
     "requiredAttributes": {
       "title": "Required attributes",
