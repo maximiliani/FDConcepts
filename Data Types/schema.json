@@ -5,11 +5,12 @@
   "title": "FAIR Digital Data Type",
   "description": "A type definition for FAIR Digital Data Types based on the former Basic Info Types.",
   "required": [
-    "identifier",
+    "pid",
     "name",
     "description",
-    "standards",
-    "provenance",
+    "createdAt",
+    "license",
+    "contributors",
     "properties"
   ],
   "properties": {
@@ -206,6 +207,9 @@
       "title": "Properties of the Data Type value",
       "description": "Restrictions on the type like regular expressions, enumeration max/min values etc,",
       "type": "object",
+      "required": [
+        "dataType"
+      ],
       "properties": {
         "expression": {
           "title": "Expression",
@@ -286,6 +290,7 @@
           "description": "The flavour of the regular expression used to validate the string against a pattern.",
           "type": "string",
           "maxLength": 1024,
+          "default": "ecma-262-RegExp",
           "enum": [
             "ecma-262-RegExp",
             "php-RegExp",

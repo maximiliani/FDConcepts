@@ -5,10 +5,13 @@
   "description": "This schema describes the structure of a FAIR Digital Operation Type Profile. FAIR Digital Operation Type Profiles are used to describe the technology and attributes of a FAIR Digital Operation.",
   "type": "object",
   "required": [
-    "title",
+    "pid",
+    "name",
     "description",
+    "createdAt",
+    "license",
+    "contributors",
     "requiredAttributes",
-    "optionalAttributes",
     "adapters"
   ],
   "properties": {
