@@ -1,6 +1,7 @@
 {
+  "$schema": "../schema.json",
   "pid": "PID->GetORCiDProfileInformationViaRESTAPI",
-  "title": "Get ORCiD Profile Information via REST API",
+  "name": "Get ORCiD Profile Information via REST API",
   "description": "This Operation retrieves the profile information of an ORCiD ID via the ORCiD API. The ORCiD number sequence is extracted from the ORCiD-Profile URL. An API Key for the ORCiD API is required and to be set in the environment.",
   "createdAt": "2024-02-05T12:00:00Z",
   "contributors": [

@@ -1,17 +1,19 @@
 {
+  "$schema": "../schema.json",
   "pid": "PID->MapWithMappingService",
-  "title": "Map with mapping service",
+  "name": "Map with mapping service",
   "description": "This is a FD Operation that enables to map a document with a given schema using the mapping service.",
   "createdAt": "2024-02-06T12:00:00Z",
   "contributors": [
     {
-      "type": "orcid",
+      "type": "ORCiD",
       "url": "https://orcid.org/0009-0005-2800-4833"
     },
     {
-      "type": "plain",
+      "type": "Text",
       "name": "Nicolas Blumenröhr",
-      "email": "nicolas.blumenroehr@kit.edu"
+      "email": "nicolas.blumenroehr@kit.edu",
+      "details": "Karlsruhe Institute of Technology"
     }
   ],
   "license": "https://creativecommons.org/licenses/by/4.0/",
@@ -23,7 +25,7 @@
   ],
   "returns": [
     {
-      "type": "PID->JSONDocument",
+      "pid": "PID->JSONDocument",
       "internal_reference": "mappedDocument"
     }
   ],
@@ -34,6 +36,7 @@
       "mode": "async",
       "steps": [
         {
+          "title": "Download mapping schema",
           "operation": "PID->Download file",
           "url": "document@PID->Schema@PID->DigitalObjectLocation",
           "output": [
@@ -44,6 +47,7 @@
           ]
         },
         {
+          "title": "Download mapping-service plugin",
           "operation": "PID->Download file",
           "url": "document@PID->Schema@PID->Plugin@PID->DigitalObjectLocation",
           "output": [
@@ -54,6 +58,7 @@
           ]
         },
         {
+          "title": "Download document to map",
           "operation": "PID->Download file",
           "url": "document@PID->DigitalObjectLocation",
           "output": [
@@ -63,6 +68,8 @@
             }
           ]
         }
+      ],
+      "output": [
       ]
     },
     {

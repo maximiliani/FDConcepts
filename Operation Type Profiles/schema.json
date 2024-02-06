@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": null,
+  "$id": "",
   "title": "FAIR Digital Operation Type Profiles",
   "description": "This schema describes the structure of a FAIR Digital Operation Type Profile. FAIR Digital Operation Type Profiles are used to describe the technology and attributes of a FAIR Digital Operation.",
   "type": "object",
@@ -24,8 +24,7 @@
       "title": "Type Name",
       "description": "A human readable name for the operation type profile",
       "type": "string",
-      "maxLength": 128,
-      "pattern": "^([!-~])+$"
+      "maxLength": 128
     },
     "description": {
       "title": "Description",
@@ -230,7 +229,14 @@
           "type": {
             "title": "Type of the attribute",
             "description": "A reference to the type of the attribute. The type of the attribute can be a primitive type or a PID.",
-            "type": "string",
+            "type": [
+              "string",
+              "array",
+              "object",
+              "boolean",
+              "number",
+              "null"
+            ],
             "examples": [
               "object",
               "PID->JSON"

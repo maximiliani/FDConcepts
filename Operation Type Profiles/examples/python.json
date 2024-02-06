@@ -1,6 +1,16 @@
 {
-  "title": "Python script",
-  "description": "not specified",
+  "$schema": "../schema.json",
+  "pid": "PID->PythonScript",
+  "name": "Python Script",
+  "description": "This Operation Type Profile is used to describe how to execute a Python script.",
+  "createdAt": "2024-02-05T12:00:00Z",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "contributors": [
+    {
+      "type": "ORCiD",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    }
+  ],
   "requiredAttributes": [
     {
       "name": "scriptLocation",
@@ -20,7 +30,7 @@
           "value": "string"
         }
       ],
-      "defaultValue": []
+      "default": []
     }
   ],
   "adapters": [

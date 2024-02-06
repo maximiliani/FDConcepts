@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": null,
+  "$id": "",
   "type": "object",
   "title": "FAIR Digital Data Type",
   "description": "A type definition for FAIR Digital Data Types based on the former Basic Info Types.",
@@ -23,8 +23,7 @@
       "title": "Type Name",
       "description": "A human readable name for the data type",
       "type": "string",
-      "maxLength": 128,
-      "pattern": "^([!-~])+$"
+      "maxLength": 128
     },
     "description": {
       "title": "Description",

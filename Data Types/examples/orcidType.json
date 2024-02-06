@@ -1,6 +1,7 @@
 {
+  "$schema": "../schema.json",
   "pid": "PID->ORCiD",
-  "title": "ORCiD",
+  "name": "ORCiD",
   "description": "This data type defines a link to an ORCiD.",
   "standards": [
     {
@@ -12,18 +13,20 @@
     {
       "natureOfApplicability": "constrains",
       "name": "ORCiD",
-      "issuer": "ORCiD.org",
+      "issuer": "other",
       "details": "see https://orcid.org/ or for API https://orcid.org/api/"
     }
   ],
   "contributors": [
     {
-      "identifiedUsing": "orcid",
+      "type": "ORCiD",
       "value": "https://orcid.org/0009-0005-2800-4833"
     },
     {
-      "identifiedUsing": "Text",
-      "value": "Nicolas Blumenröhr <nicolas.blumenroehr@kit.edu>"
+      "type": "Text",
+      "name": "Nicolas Blumenröhr",
+      "email": "nicolas.blumenroehr@kit.edu",
+      "details": "Karlruhe Institute of Technology"
     }
   ],
   "createdAt": "2019-11-20",
@@ -32,14 +35,11 @@
     "Identification of a person",
     "Linking to a persons ORCiD profile"
   ],
-  "representationAndSemantics":[],
-  "properties": [
-    {
-      "name": "orcid",
-      "description": "The ORCiD of the person",
-      "required": true,
-      "type": "string",
-      "regex": "https://orcid.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]"
-    }
-  ]
+  "representationAndSemantics": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "properties": {
+    "dataType": "string",
+    "regexp": "https://orcid.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]",
+    "regexFlavour": "ecma-262-RegExp"
+  }
 }

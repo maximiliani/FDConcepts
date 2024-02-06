@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": null,
+  "$id": "",
   "title": "FAIR Digital Type Profile",
   "description": "A schema for describing a FAIR Digital Type Profile.",
   "type": "object",
@@ -23,8 +23,7 @@
       "title": "Type Name",
       "description": "A human readable name for the type profile",
       "type": "string",
-      "maxLength": 128,
-      "pattern": "^([!-~])+$"
+      "maxLength": 128
     },
     "description": {
       "title": "Description",
@@ -261,7 +260,6 @@
             "title": "Name",
             "description": "Name assigned to dependent type in this context",
             "type": "string",
-            "pattern": "^([!-~])+$",
             "maxLength": 256
           },
           "description": {

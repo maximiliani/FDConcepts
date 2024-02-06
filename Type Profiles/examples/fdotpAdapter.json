@@ -1,0 +1,48 @@
+{
+  "$schema": "../schema.json",
+  "pid": "PID->FDOTPAdapterSchema",
+  "name": "FAIR Data Operation Type Profile Adapter",
+  "description": "This schema specifies the structure of the FAIR Data Operation Type Profile Adapter.",
+  "createdAt": "2024-02-06",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "contributors": [
+    {
+      "type": "ORCiD",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    }
+  ],
+  "inheritsFrom": [
+    "PID->HelmholtzKIP"
+  ],
+  "subSchemaRelation": "denyAdditionalProperties",
+  "properties": [
+    {
+      "pid": "PID->Language",
+      "name": "Programming Language",
+      "description": "The programming language used to implement the adapter.",
+      "mandatory": true,
+      "repeatable": false
+    },
+    {
+      "pid": "PID->Operating System",
+      "name": "Operating System",
+      "description": "The operating system on which the adapter is intended to run.",
+      "obligation": "Optional",
+      "repeatable": true
+    },
+    {
+      "pid": "PID->URL",
+      "name": "Documentation",
+      "description": "A reference to a human-readable documentation of the adapter.",
+      "obligation": "Optional",
+      "repeatable": true
+    },
+    {
+      "pid": "PID->Repository",
+      "name": "Repository",
+      "description": "A reference to the source code repository of the adapter.",
+      "obligation": "Optional",
+      "repeatable": false
+    }
+  ]
+}

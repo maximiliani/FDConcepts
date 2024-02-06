@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": null,
+  "$id": "null",
   "title": "FAIR Digital Operation",
   "description": "A schema for machine actionable operations based on strongly typed FAIR data.",
   "type": "object",
@@ -26,8 +26,7 @@
       "title": "Type Name",
       "description": "A human readable name for the operation",
       "type": "string",
-      "maxLength": 128,
-      "pattern": "^([!-~])+$"
+      "maxLength": 128
     },
     "description": {
       "title": "Description",
@@ -255,7 +254,6 @@
         "type": "object",
         "required": [
           "title",
-          "mode",
           "output"
         ],
         "properties": {
@@ -278,6 +276,7 @@
               "async",
               "sync"
             ],
+            "default": "sync",
             "examples": [
               "async",
               "sync"
@@ -286,9 +285,8 @@
           "steps": {
             "title": "A recursive array of operation steps",
             "description": "This list contains all the steps that are executed in this operation step.",
-            "type": "array",
             "items": {
-              "$ref": "#/properties/execution"
+              "$recursiveRef": "#/properties/execution/items"
             },
             "examples": [
               [
