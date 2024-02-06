@@ -1,0 +1,291 @@
+{
+  "pid": "PID->HelmholtzKIP",
+  "name": "Helmholtz Kernel Information Profile",
+  "description": "The Helmholtz Kernel Information Profile (KIP) defines the most basic metadata a FAIR DO should have.",
+  "createdAT": "2022-01-17T10:50:09.966Z",
+  "modifiedAt": "2024-02-06T10:50:09Z",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "contributors": [
+    {
+      "type": "Text",
+      "name": "Andreas Pfeil",
+      "email": "andreas.pfeil@kit.edu",
+      "details": "Karlsruhe Institute for Technology"
+    },
+    {
+      "type": "ORCiD",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    }
+  ],
+  "standards": [
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/076759916209e5d62bd5",
+      "issuer": "DTR",
+      "details": "KernelInformationProfile"
+    },
+    {
+      "natureOfApplicability": "extends",
+      "name": "21.T11148/c83481d4bf467110e7c9",
+      "issuer": "DTR",
+      "details": "genericDatatype"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/b8457812905b83046284",
+      "issuer": "DTR",
+      "details": "digitalObjectLocation"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/8074aed799118ac263ad",
+      "issuer": "DTR",
+      "details": "digitalObjectPolicy"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/92e200311a56800b3e47",
+      "issuer": "DTR",
+      "details": "etag"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/aafd5fb4c7222e2d950a",
+      "issuer": "DTR",
+      "details": "dateCreatedRfc3339"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/397d831aa3a9d18eb52c",
+      "issuer": "DTR",
+      "details": "dateModified"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/c692273deb2772da307f",
+      "issuer": "DTR",
+      "details": "version"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/1a73af9e7ae00182733b",
+      "issuer": "DTR",
+      "details": "contact"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/b415e16fbe4ca40f2270",
+      "issuer": "DTR",
+      "details": "topic"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/dc54ae4b6807f5887fda",
+      "issuer": "DTR",
+      "details": "license"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/d0773859091aeb451528",
+      "issuer": "DTR",
+      "details": "hasMetadata"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/4fe7cde52629b61e3b82",
+      "issuer": "DTR",
+      "details": "isMetadataFor"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/c085f1292d7d4a338d96",
+      "issuer": "DTR",
+      "details": "wasGeneratedBy"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/c6e4c19f294ee6f41b1e",
+      "issuer": "DTR",
+      "details": "wasDerivedFrom"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/ab53242825e85a0a7f76",
+      "issuer": "DTR",
+      "details": "specializationOf"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/2a1cad55473b20407c78",
+      "issuer": "DTR",
+      "details": "wasRevisionOf"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/a753134738da82809fc1",
+      "issuer": "DTR",
+      "details": "hadPrimarySource"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/beaeecebec408908de35",
+      "issuer": "DTR",
+      "details": "wasQuotedFrom"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/432132bdbd946b2baf2b",
+      "issuer": "DTR",
+      "details": "alternateOf"
+    },
+    {
+      "natureOfApplicability": "depends",
+      "name": "21.T11148/af11e18f83466642c47d",
+      "issuer": "DTR",
+      "details": "provenanceGraph"
+    }
+  ],
+  "properties": [
+    {
+      "pid": "21.T11148/076759916209e5d62bd5",
+      "name": "Profile",
+      "description": "This field uses a PID to refer to the profile that is used to describe the digital object. Multiple profiles can be used. At least this profile must be used.",
+      "obligation": "Mandatory",
+      "repeatable": "Yes",
+      "default": "PID->KernelInformationProfile"
+    },
+    {
+      "pid": "21.T11148/c83481d4bf467110e7c9",
+      "name": "digitalObjectType",
+      "description": "Describes the type of the object that is references by such a record.",
+      "obligation": "Optional",
+      "repeatable": "No"
+    },
+    {
+      "pid": "21.T11148/b8457812905b83046284",
+      "name": "digitalObjectLocation",
+      "description": "A url as location. As a workaround, a PID in proxy notation (resolvers url) can be used instead if needed.",
+      "obligation": "Mandatory",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/92e200311a56800b3e47",
+      "name": "etag",
+      "description": "A string that is used to detect changes to the digital object when using optimistic concurrency control.",
+      "obligation": "Optional",
+      "repeatable": "No"
+    },
+    {
+      "pid": "21.T11148/aafd5fb4c7222e2d950a",
+      "name": "dateCreated",
+      "description": "Date/time of object creation.",
+      "obligation": "Mandatory",
+      "repeatable": "No"
+    },
+    {
+      "identifier": "21.T11148/397d831aa3a9d18eb52c",
+      "name": "dateModified",
+      "description": "Date/time of a modification of the object.",
+      "obligation": "Mandatory",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/c692273deb2772da307f",
+      "name": "version",
+      "description": "If tracked, a version for the object, which must follow a total order. Mandatory for all objects with at least one predecessor version.",
+      "obligation": "Mandatory",
+      "repeatable": "No"
+    },
+    {
+      "pid": "21.T11148/1a73af9e7ae00182733b",
+      "name": "contact",
+      "description": "A web-resolvable pointer to an institution or a person responsible for the digital object.",
+      "obligation": "Mandatory",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/dc54ae4b6807f5887fda",
+      "name": "license",
+      "description": "names license requirement of the collection (type : string, currently, but could be also given as a controlled vocabulary, like '[\"CC0\", \"CC-BY\", \"CC-BY-SA\", \"CC-by-NC\", \"CC-BY-ND\", \"CC-BY-NC-SA\", \"CC-BY-NC-ND\"]', context : collection).",
+      "obligation": "Mandatory",
+      "repeatable": "No"
+    },
+    {
+      "pid": "21.T11148/b415e16fbe4ca40f2270",
+      "name": "topic",
+      "description": "One or more topics the digital object is related to.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/d0773859091aeb451528",
+      "name": "hasMetadata",
+      "description": "One or more PID(s) referring to related FAIR DOs providing metadata for the digital object.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/4fe7cde52629b61e3b82",
+      "name": "isMetadataFor",
+      "description": "One or more PID(s) referring to related FAIR DOs for which the digital object provides metadata.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/c085f1292d7d4a338d96",
+      "name": "wasGeneratedBy",
+      "description": "A PID pointing to an activity which generated a object.",
+      "obligation": "Optional",
+      "repeatable": "No"
+    },
+    {
+      "pid": "21.T11148/c6e4c19f294ee6f41b1e",
+      "name": "wasDerivedFrom",
+      "description": "A PID pointing to another FAIR DO which refers to the object from which the current object was derived.",
+      "obligation": "Optional",
+      "repeatable": "No"
+    },
+    {
+      "pid": "21.T11148/c6e4c19f294ee6f41b1e",
+      "name": "specializationOf",
+      "description": "A PID pointing to another FAIR DO which refers to the object from which the current object was derived.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/2a1cad55473b20407c78",
+      "name": "wasRevisionOf",
+      "description": "A PID pointing to another FAIR DO which refers to the object from which the current object was derived.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/a753134738da82809fc1",
+      "name": "hadPrimarySource",
+      "description": "A PID pointing to another FAIR DO which refers to the primary source of a object.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/beaeecebec408908de35",
+      "name": "wasQuotedFrom",
+      "description": "A PID pointing to another FAIR DO which refers to the object from which the current object was derived.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/432132bdbd946b2baf2b",
+      "name": "alternateOf",
+      "description": "A PID pointing to another FAIR DO which refers to the object from which the current object was derived.",
+      "obligation": "Optional",
+      "repeatable": "Yes"
+    },
+    {
+      "pid": "21.T11148/af11e18f83466642c47d",
+      "name": "provenanceGraph",
+      "description": "A PID pointing to another FAIR DO which refers to the provenance graph of a object.",
+      "obligation": "Optional",
+      "repeatable": "No"
+    }
+  ]
+}
