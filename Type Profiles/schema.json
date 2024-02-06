@@ -229,6 +229,16 @@
       "type": "string",
       "maxLength": 262144
     },
+    "inheritsFrom": {
+      "title": "Inherits From",
+      "description": "The PIDs of the type profile this type profile inherits from.",
+      "type": "array",
+      "items": {
+        "title": "Inherited Type Profile",
+        "description": "PID of the type profile this type profile inherits from.",
+        "type": "string"
+      }
+    },
     "properties": {
       "type": "array",
       "title": "Properties",
@@ -306,6 +316,13 @@
           }
         }
       }
+    },
+    "validationSchema": {
+      "title": "Validation Schema",
+      "description": "Schema used to validate an instance of this type profile. It is a JSON schema conforming to the JSON Schema standard. The schema is used to validate the data in the FDO.",
+      "type": "object",
+      "format": "textarea",
+      "maxLength": 1048575
     }
   }
 }

@@ -203,6 +203,16 @@
         }
       }
     },
+    "inheritedFrom": {
+      "title": "Inherited From",
+      "description": "The data types from which this data type inherits its properties.",
+      "type": "array",
+      "items": {
+        "title": "Inherited Data Type",
+        "description": "A PID to a data type from which this data type inherits its properties.",
+        "type": "string"
+      }
+    },
     "properties": {
       "title": "Properties of the Data Type value",
       "description": "Restrictions on the type like regular expressions, enumeration max/min values etc,",
