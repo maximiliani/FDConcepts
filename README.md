@@ -21,3 +21,4 @@ Examples of JSON Documents for different types of elements in the FAIR Data Ecos
 | `-INH->`    | Something inherits from another thing   | `SHA256 -INH-> Checksum`<br/> `HTTPLocation -INH-> URL -INH-> Location` |
 | `AND_SO_ON` | More concrete definition somewhere else | `A OR B OR C AND_SO_ON`                                                 |
 | `OR`        | Describes an alternative                | `any OR PID->JSON`                                                      |
+| `@`         | Calls an Attribute of a Type Profile    | `PID->MappableDocument@PID->Schema@PID->DigitalObjectLocation`          |

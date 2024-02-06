@@ -2,18 +2,19 @@
   "pid": "PID->GetORCiDProfileInformationViaRESTAPI",
   "title": "Get ORCiD Profile Information via REST API",
   "description": "This Operation retrieves the profile information of an ORCiD ID via the ORCiD API. The ORCiD number sequence is extracted from the ORCiD-Profile URL. An API Key for the ORCiD API is required and to be set in the environment.",
-  "createdAt": "20231115Z1800",
-  "provenance": [
+  "createdAt": "2024-02-05T12:00:00Z",
+  "contributors": [
     {
-      "type": "orcid",
+      "type": "ORCiD",
       "url": "https://orcid.org/0009-0005-2800-4833"
     },
     {
-      "type": "plain",
+      "type": "Text",
       "name": "Nicolas Blumenröhr",
       "email": "nicolas.blumenroehr@kit.edu"
     }
   ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
   "executableOn": [
     {
       "pid": "PID->ORCiD",

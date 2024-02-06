@@ -1,9 +1,9 @@
 {
-  "type": "workflow",
+  "pid": "PID->MapWithMappingService",
   "title": "Map with mapping service",
-  "description": "This is a basic",
-  "createdAt": "20231115Z1800",
-  "provenance": [
+  "description": "This is a FD Operation that enables to map a document with a given schema using the mapping service.",
+  "createdAt": "2024-02-06T12:00:00Z",
+  "contributors": [
     {
       "type": "orcid",
       "url": "https://orcid.org/0009-0005-2800-4833"
@@ -14,51 +14,61 @@
       "email": "nicolas.blumenroehr@kit.edu"
     }
   ],
-  "inputTypes": [
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "executableOn": [
     {
-      "key": "PID -> MPSSchema",
-      "internal_reference": "mpsSchema"
-    },
-    {
-      "key": "PID -> MPSPlugin",
-      "internal_reference": "mpsPlugin"
-    },
-    {
-      "key": "PID -> URL",
-      "internal_reference": "documentURL"
+      "pid": "PID->MappableDocument",
+      "internal_reference": "document"
     }
   ],
-  "outputTypes": {
-    "type": "PID -> JSONDocument",
-    "result_internal_reference": "mappedDocument"
-  },
-  "requiredAttributes": [],
+  "returns": [
+    {
+      "type": "PID->JSONDocument",
+      "internal_reference": "mappedDocument"
+    }
+  ],
+  "environment": [],
   "execution": [
     {
       "title": "Download files",
       "mode": "async",
       "steps": [
         {
-          "operation": "PID -> Download file",
-          "url": "mpsSchema",
-          "result_internal_reference": "schema"
+          "operation": "PID->Download file",
+          "url": "document@PID->Schema@PID->DigitalObjectLocation",
+          "output": [
+            {
+              "key": "file",
+              "internal_reference": "schema"
+            }
+          ]
         },
         {
-          "operation": "PID -> Download file",
-          "url": "mpsPlugin",
-          "result_internal_reference": "plugin"
+          "operation": "PID->Download file",
+          "url": "document@PID->Schema@PID->Plugin@PID->DigitalObjectLocation",
+          "output": [
+            {
+              "key": "file",
+              "internal_reference": "plugin"
+            }
+          ]
         },
         {
-          "operation": "PID -> Download file",
-          "url": "documentURL",
-          "result_internal_reference": "document"
+          "operation": "PID->Download file",
+          "url": "document@PID->DigitalObjectLocation",
+          "output": [
+            {
+              "key": "file",
+              "internal_reference": "document"
+            }
+          ]
         }
       ]
     },
     {
       "title": "Start mapping service",
       "mode": "sync",
-      "operation": "PID -> DockerMappingService",
+      "operation": "PID->DockerMappingService",
       "attributes": [
         {
           "key": "plugins",
@@ -67,12 +77,17 @@
           ]
         }
       ],
-      "result_internal_reference": "mpsURL"
+      "output": [
+        {
+          "key": "serviceURL",
+          "internal_reference": "mpsURL"
+        }
+      ]
     },
     {
       "title": "Upload schema to Mapping-Service",
       "mode": "sync",
-      "operationTypeProfile": "PID -> HTTP",
+      "operationTypeProfile": "PID->HTTP",
       "attributes": [
         {
           "key": "url",
@@ -80,19 +95,24 @@
         },
         {
           "key": "method",
-          "value": "PID -> HTTPMethod.POST"
+          "value": "PID->HTTPMethod.POST"
         },
         {
           "key": "payload",
           "value": "schema"
         }
       ],
-      "result_internal_reference": "schemaID"
+      "output": [
+        {
+          "key": "body.schemaID",
+          "internal_reference": "schemaID"
+        }
+      ]
     },
     {
       "title": "Map document",
       "mode": "sync",
-      "operationTypeProfile": "PID -> HTTP",
+      "operationTypeProfile": "PID->HTTP",
       "attributes": [
         {
           "key": "url",
@@ -100,14 +120,19 @@
         },
         {
           "key": "method",
-          "value": "PID -> HTTPMethod.POST"
+          "value": "PID->HTTPMethod.POST"
         },
         {
           "key": "payload",
           "value": "document"
         }
       ],
-      "result_internal_reference": "mappedDocument"
+      "output": [
+        {
+          "key": "body",
+          "internal_reference": "mappedDocument"
+        }
+      ]
     }
   ]
 }
