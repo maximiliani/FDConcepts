@@ -11,9 +11,9 @@
     "createdAt",
     "license",
     "contributors",
-    "inputTypes",
-    "outputTypes",
-    "requiredAttributes",
+    "executableOn",
+    "returns",
+    "environment",
     "execution"
   ],
   "properties": {
