@@ -10,7 +10,8 @@
     "description",
     "createdAt",
     "license",
-    "contributors"
+    "contributors",
+    "properties"
   ],
   "properties": {
     "pid": {
@@ -232,6 +233,7 @@
       "type": "array",
       "title": "Properties",
       "description": "Type dependencies used for expressing how this type is built from other types",
+      "minItems": 1,
       "items": {
         "title": "Property",
         "type": "object",
