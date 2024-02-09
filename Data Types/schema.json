@@ -11,7 +11,7 @@
     "createdAt",
     "license",
     "contributors",
-    "properties"
+    "primitiveDataType"
   ],
   "properties": {
     "pid": {
@@ -36,27 +36,18 @@
       "title": "Creation date",
       "description": "The date when this data type was created in RFC 3339 format.",
       "type": "string",
-      "format": "datetime",
-      "examples": [
-        "2024-ß2-05T12:00:00Z"
-      ]
+      "format": "datetime"
     },
     "lastModifiedAt": {
       "title": "Modification date",
       "description": "The date when this data type was lastly modified in RFC 3339 format.",
       "type": "string",
-      "format": "datetime",
-      "examples": [
-        "2024-ß2-05T12:00:01Z"
-      ]
+      "format": "datetime"
     },
     "license": {
       "title": "License",
       "description": "The license of this data type. It is a PID or URL pointing to a license.",
-      "type": "string",
-      "examples": [
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "type": "string"
     },
     "contributors": {
       "title": "Contributors",
@@ -74,10 +65,6 @@
             "title": "Type of the provenance information",
             "description": "The type specifies the kind of reference to the subject. It can be a URL, a Handle, an ORCiD, or some plain text.",
             "type": "string",
-            "examples": [
-              "Handle",
-              "ORCiD"
-            ],
             "enum": [
               "Handle",
               "ORCiD",
@@ -88,26 +75,17 @@
           "url": {
             "title": "URL",
             "description": "A URL referring to a person, group, or organization. When ORCiD is chosen as a type, this refers to the ORCiD profile.",
-            "type": "string",
-            "examples": [
-              "https://orcid.org/0009-0005-2800-4833"
-            ]
+            "type": "string"
           },
           "name": {
             "title": "Name",
             "description": "The name of a person, group, or organization",
-            "type": "string",
-            "examples": [
-              "Nicolas Blumenröhr"
-            ]
+            "type": "string"
           },
           "email": {
             "title": "E-Mail address",
             "description": "An email address for a person, group, or organization",
-            "type": "string",
-            "examples": [
-              "nicolas.blumenroehr@kit.edu"
-            ]
+            "type": "string"
           },
           "details": {
             "title": "Details",
@@ -115,33 +93,8 @@
             "format": "textarea",
             "maxLength": 1024
           }
-        },
-        "examples": [
-          {
-            "type": "orcid",
-            "url": "https://orcid.org/0009-0005-2800-4833"
-          },
-          {
-            "type": "plain",
-            "name": "Nicolas Blumenröhr",
-            "email": "nicolas.blumenroehr@kit.edu"
-          }
-        ]
-      },
-      "examples": [
-        [
-          {
-            "type": "orcid",
-            "url": "https://orcid.org/0009-0005-2800-4833"
-          },
-          {
-            "type": "plain",
-            "name": "Nicolas Blumenröhr",
-            "email": "nicolas.blumenroehr@kit.edu"
-          }
-        ]
-      ],
-      "uniqueItems": false
+        }
+      }
     },
     "standards": {
       "title": "Applicable Standards or Recommendations",
@@ -212,109 +165,88 @@
         "type": "string"
       }
     },
-    "properties": {
-      "title": "Properties of the Data Type value",
-      "description": "Restrictions on the type like regular expressions, enumeration max/min values etc,",
-      "type": "object",
-      "required": [
-        "dataType"
-      ],
-      "properties": {
-        "expression": {
-          "title": "Expression",
-          "description": "A semantic description of the category of the property.",
-          "type": "string",
-          "enum": [
-            "Measurement Unit",
-            "Format",
-            "Character Set",
-            "Encoding",
-            "Measurement Unit",
-            "Other"
-          ]
-        },
-        "unitName": {
-          "title": "Unit Name",
-          "description": "For measurement units the name of the quantity (meter, second, Joule etc).",
-          "type": "string",
-          "maxLength": 1024
-        },
-        "unitSymbol": {
-          "title": "Unit Symbol",
-          "description": "For measurement units the symbol used for the quantity (m, s, J etc).",
-          "type": "string",
-          "maxLength": 1024
-        },
-        "definedBy": {
-          "title": "Defined By",
-          "description": "For derived measurement units the definition given as an expression of operator linked type identifiers. Allowed operators are: +. -, *, /, ^, (, ) For numerical constants here only the value is given as string. Numerical constant values x have to be additionally described in the restrictions area by  \"minimum\": x, \"maximum\": x in order to provide also a correct schema for such types.",
-          "type": "string",
-          "maxLength": 65536
-        },
-        "dataType": {
-          "title": "Primary data type",
-          "description": "The primary data type (see JSON specifications) of the property",
-          "type": "string",
-          "maxLength": 1024,
-          "enum": [
-            "string",
-            "integer",
-            "number",
-            "boolean",
-            "null"
-          ]
-        },
-        "standard_uncertainty": {
-          "title": "Standard Uncertainty",
-          "description": "Relative standard uncertainty (i.e. u_r)",
-          "type": "string",
-          "maxLength": 1024
-        },
-        "restrict": {
-          "title": "Restrictions",
-          "description": "Define type dependent restrictions with special keywords like multipleOf, minimum, maximum, exclusiveMinimum and exclusiveMaximum for numbers and minLength, maxLength, enum or formats like date-time, email, hostname, ipv4, ipv6 or uri for strings. Examples: \"minimum\": -3.8, \"maximum\": -9.7  OR  \"minLength\": 5 , \"maxLength\": 6 OR \"format\" : \"time\" ",
-          "type": "string",
-          "maxLength": 4096
-        },
-        "regexp": {
-          "title": "Regular Expression",
-          "description": "This regular expression is only used for string data types. It is used to validate the string against a pattern. The flavour of the regular expression needs to be specified in the flavour field.",
-          "type": "string",
-          "maxLength": 4096
-        },
-        "enum": {
-          "title": "Enumeration List",
-          "description": "Needs to be compatible with data type: For mixed types like  [\"a\", \"bc\", 123, \"def\"] use NoType",
-          "type": "string",
-          "maxLength": 262144
-        },
-        "default": {
-          "title": "Default Value",
-          "description": "A default value can be provided here. Needs to be a string representation of a JSON object that is compatible with the restrictions. String delimiters need to be escaped",
-          "type": "string",
-          "maxLength": 262144
-        },
-        "regexFlavour": {
-          "title": "Flavour of RegExp",
-          "description": "The flavour of the regular expression used to validate the string against a pattern.",
-          "type": "string",
-          "maxLength": 1024,
-          "default": "ecma-262-RegExp",
-          "enum": [
-            "ecma-262-RegExp",
-            "php-RegExp",
-            "javascript-RegExp",
-            "python-RegExp"
-          ]
-        }
+    "primitiveDataType": {
+      "title": "Primitive data type",
+      "description": "The primitive data type (see JSON specifications) of the value",
+      "type": "string",
+      "maxLength": 1024,
+      "enum": [
+        "string",
+        "number",
+        "boolean"
+      ]
+    },
+    "category": {
+      "title": "Type",
+      "description": "A semantic description of the category of the property.",
+      "type": "string",
+      "default": "Format",
+      "enum": [
+        "Measurement Unit",
+        "Format",
+        "Character Set",
+        "Encoding",
+        "Other"
+      ]
+    },
+    "unitName": {
+      "title": "Unit Name",
+      "description": "For measurement units the name of the quantity (meter, second, Joule etc).",
+      "type": "string",
+      "maxLength": 1024
+    },
+    "unitSymbol": {
+      "title": "Unit Symbol",
+      "description": "For measurement units the symbol used for the quantity (m, s, J etc).",
+      "type": "string",
+      "maxLength": 1024
+    },
+    "definedBy": {
+      "title": "Defined By",
+      "description": "For derived measurement units the definition given as an expression of operator linked type identifiers. Allowed operators are: +. -, *, /, ^, (, ) For numerical constants here only the value is given as string. Numerical constant values x have to be additionally described in the restrictions area by  \"minimum\": x, \"maximum\": x in order to provide also a correct schema for such types.",
+      "type": "string",
+      "maxLength": 65536
+    },
+    "standard_uncertainty": {
+      "title": "Standard Uncertainty",
+      "description": "Relative standard uncertainty (i.e. u_r)",
+      "type": "string",
+      "maxLength": 1024
+    },
+    "restrictions": {
+      "title": "Restrictions",
+      "description": "Define type dependent restrictions with special keywords like multipleOf, minimum, maximum, exclusiveMinimum and exclusiveMaximum for numbers and minLength, maxLength, enum or formats like date-time, email, hostname, ipv4, ipv6 or uri for strings. Examples: \"minimum\": -3.8, \"maximum\": -9.7  OR  \"minLength\": 5 , \"maxLength\": 6 OR \"format\" : \"time\" ",
+      "type": "string",
+      "maxLength": 4096
+    },
+    "regexp": {
+      "title": "Regular Expression",
+      "description": "This regular expression is only used for string data types. It is used to validate the string against a pattern. The flavour of the regular expression needs to be specified in the flavour field.",
+      "type": "string",
+      "maxLength": 4096
+    },
+    "enum": {
+      "title": "Enumeration List",
+      "description": "A list of allowed values for this data type.",
+      "type": "array",
+      "items": {
+        "title": "Enumeration Value",
+        "description": "A value that is allowed for this data type",
+        "type": "string"
       }
     },
-    "validationSchema": {
-      "title": "Validation Schema",
-      "description": "Schema used to validate an instance of this type ",
-      "type": "object",
-      "format": "textarea",
-      "maxLength": 1048575
+    "default": {
+      "title": "Default Value",
+      "description": "A default value can be provided here.",
+      "type": "string",
+      "maxLength": 262144
+    },
+    "regexFlavour": {
+      "title": "Flavour of RegExp",
+      "description": "The flavour of the regular expression used to validate the string against a pattern.",
+      "type": "string",
+      "maxLength": 1024,
+      "default": "ecma-262-RegExp"
     }
   }
 }

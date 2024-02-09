@@ -36,27 +36,18 @@
       "title": "Creation date",
       "description": "The date when this type profile was created in RFC 3339 format.",
       "type": "string",
-      "format": "datetime",
-      "examples": [
-        "2024-ß2-05T12:00:00Z"
-      ]
+      "format": "datetime"
     },
     "lastModifiedAt": {
       "title": "Modification date",
       "description": "The date when this type profile was lastly modified in RFC 3339 format.",
       "type": "string",
-      "format": "datetime",
-      "examples": [
-        "2024-ß2-05T12:00:01Z"
-      ]
+      "format": "datetime"
     },
     "license": {
       "title": "License",
       "description": "The license of this type profile. It is a PID or URL pointing to a license.",
-      "type": "string",
-      "examples": [
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "type": "string"
     },
     "contributors": {
       "title": "Contributors",
@@ -74,10 +65,6 @@
             "title": "Type of the provenance information",
             "description": "The type specifies the kind of reference to the subject. It can be a URL, a Handle, an ORCiD, or some plain text.",
             "type": "string",
-            "examples": [
-              "Handle",
-              "ORCiD"
-            ],
             "enum": [
               "Handle",
               "ORCiD",
@@ -88,26 +75,17 @@
           "url": {
             "title": "URL",
             "description": "A URL referring to a person, group, or organization. When ORCiD is chosen as a type, this refers to the ORCiD profile.",
-            "type": "string",
-            "examples": [
-              "https://orcid.org/0009-0005-2800-4833"
-            ]
+            "type": "string"
           },
           "name": {
             "title": "Name",
             "description": "The name of a person, group, or organization",
-            "type": "string",
-            "examples": [
-              "Nicolas Blumenröhr"
-            ]
+            "type": "string"
           },
           "email": {
             "title": "E-Mail address",
             "description": "An email address for a person, group, or organization",
-            "type": "string",
-            "examples": [
-              "nicolas.blumenroehr@kit.edu"
-            ]
+            "type": "string"
           },
           "details": {
             "title": "Details",
@@ -115,33 +93,8 @@
             "format": "textarea",
             "maxLength": 1024
           }
-        },
-        "examples": [
-          {
-            "type": "orcid",
-            "url": "https://orcid.org/0009-0005-2800-4833"
-          },
-          {
-            "type": "plain",
-            "name": "Nicolas Blumenröhr",
-            "email": "nicolas.blumenroehr@kit.edu"
-          }
-        ]
-      },
-      "examples": [
-        [
-          {
-            "type": "orcid",
-            "url": "https://orcid.org/0009-0005-2800-4833"
-          },
-          {
-            "type": "plain",
-            "name": "Nicolas Blumenröhr",
-            "email": "nicolas.blumenroehr@kit.edu"
-          }
-        ]
-      ],
-      "uniqueItems": false
+        }
+      }
     },
     "standards": {
       "title": "Applicable Standards or Recommendations",
@@ -209,10 +162,10 @@
       "enum": [
         "denyAdditionalProperties",
         "allowAdditionalProperties",
-        "requestAllOfProperties",
-        "requestAnyOfProperties",
-        "requestOneOfProperties",
-        "isNot"
+        "requireAllProperties",
+        "requireAnyOfProperties",
+        "requireOneOfProperties",
+        "requireNoneOfProperties"
       ],
       "default": "allowAdditionalProperties"
     },
@@ -287,40 +240,18 @@
           },
           "defaultValue": {
             "title": "Default Value",
-            "description": "A default value can be provided here.",
-            "type": [
-              "string",
-              "number",
-              "boolean",
-              "object",
-              "array",
-              "null"
-            ],
-            "maxLength": 262144,
-            "default": null
+            "description": "A default value can be provided here. Needs to be a string representation of a JSON object that is compatible with these restrictions. String delimiters need to be escaped",
+            "type": "string",
+            "maxLength": 262144
           },
           "constantValue": {
             "title": "Constant Value",
-            "description": "Used if the type has a constant value on all possible instances for this parameter. This value cannot be changed in the FDO",
-            "type": [
-              "string",
-              "number",
-              "boolean",
-              "object",
-              "array",
-              "null"
-            ],
+            "description": "Used if the type has a constant value on all possible instances for this parameter. This value cannot be changed in the FDO. Needs to be a string representation of a JSON object that is compatible with these restrictions. String delimiters need to be escaped",
+            "type": "string",
             "maxLength": 262144
           }
         }
       }
-    },
-    "validationSchema": {
-      "title": "Validation Schema",
-      "description": "Schema used to validate an instance of this type profile. It is a JSON schema conforming to the JSON Schema standard. The schema is used to validate the data in the FDO.",
-      "type": "object",
-      "format": "textarea",
-      "maxLength": 1048575
     }
   }
 }

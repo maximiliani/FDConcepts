@@ -37,9 +37,7 @@
   ],
   "representationAndSemantics": [],
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "properties": {
-    "dataType": "string",
-    "regexp": "https://orcid.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]",
-    "regexFlavour": "ecma-262-RegExp"
-  }
+  "primitiveDataType": "string",
+  "regexp": "https://orcid.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]",
+  "regexFlavour": "ecma-262-RegExp"
 }

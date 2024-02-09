@@ -37,27 +37,18 @@
       "title": "Creation date",
       "description": "The date when this operation type profile was created in RFC 3339 format.",
       "type": "string",
-      "format": "datetime",
-      "examples": [
-        "2024-ß2-05T12:00:00Z"
-      ]
+      "format": "datetime"
     },
     "lastModifiedAt": {
       "title": "Modification date",
       "description": "The date when this operation type profile was lastly modified in RFC 3339 format.",
       "type": "string",
-      "format": "datetime",
-      "examples": [
-        "2024-ß2-05T12:00:01Z"
-      ]
+      "format": "datetime"
     },
     "license": {
       "title": "License",
       "description": "The license of this operation type profile. It is a PID or URL pointing to a license.",
-      "type": "string",
-      "examples": [
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "type": "string"
     },
     "contributors": {
       "title": "Contributors",
@@ -75,10 +66,6 @@
             "title": "Type of the provenance information",
             "description": "The type specifies the kind of reference to the subject. It can be a URL, a Handle, an ORCiD, or some plain text.",
             "type": "string",
-            "examples": [
-              "Handle",
-              "ORCiD"
-            ],
             "enum": [
               "Handle",
               "ORCiD",
@@ -89,26 +76,17 @@
           "url": {
             "title": "URL",
             "description": "A URL referring to a person, group, or organization. When ORCiD is chosen as a type, this refers to the ORCiD profile.",
-            "type": "string",
-            "examples": [
-              "https://orcid.org/0009-0005-2800-4833"
-            ]
+            "type": "string"
           },
           "name": {
             "title": "Name",
             "description": "The name of a person, group, or organization",
-            "type": "string",
-            "examples": [
-              "Nicolas Blumenröhr"
-            ]
+            "type": "string"
           },
           "email": {
             "title": "E-Mail address",
             "description": "An email address for a person, group, or organization",
-            "type": "string",
-            "examples": [
-              "nicolas.blumenroehr@kit.edu"
-            ]
+            "type": "string"
           },
           "details": {
             "title": "Details",
@@ -116,33 +94,8 @@
             "format": "textarea",
             "maxLength": 1024
           }
-        },
-        "examples": [
-          {
-            "type": "orcid",
-            "url": "https://orcid.org/0009-0005-2800-4833"
-          },
-          {
-            "type": "plain",
-            "name": "Nicolas Blumenröhr",
-            "email": "nicolas.blumenroehr@kit.edu"
-          }
-        ]
-      },
-      "examples": [
-        [
-          {
-            "type": "orcid",
-            "url": "https://orcid.org/0009-0005-2800-4833"
-          },
-          {
-            "type": "plain",
-            "name": "Nicolas Blumenröhr",
-            "email": "nicolas.blumenroehr@kit.edu"
-          }
-        ]
-      ],
-      "uniqueItems": false
+        }
+      }
     },
     "requiredAttributes": {
       "title": "Required attributes",
@@ -160,46 +113,15 @@
           "name": {
             "title": "Name of the attribute",
             "description": "A human-readable name of the attribute.",
-            "type": "string",
-            "examples": [
-              "url",
-              "method"
-            ]
+            "type": "string"
           },
           "type": {
             "title": "Type of the attribute",
             "description": "A reference to the type of the attribute. The type of the attribute can be a primitive type or a PID.",
-            "type": "string",
-            "examples": [
-              "string",
-              "PID->URL",
-              "PID->HTTPMethod"
-            ]
+            "type": "string"
           }
-        },
-        "examples": [
-          {
-            "name": "url",
-            "type": "PID->URL"
-          },
-          {
-            "name": "method",
-            "type": "PID->HTTPMethod"
-          }
-        ]
-      },
-      "examples": [
-        [
-          {
-            "name": "url",
-            "type": "PID->URL"
-          },
-          {
-            "name": "method",
-            "type": "PID->HTTPMethod"
-          }
-        ]
-      ]
+        }
+      }
     },
     "optionalAttributes": {
       "title": "Optional attributes",
@@ -218,13 +140,7 @@
           "name": {
             "title": "Name of the attribute",
             "description": "A human-readable name of the attribute.",
-            "type": "string",
-            "examples": [
-              "headers",
-              "cookies",
-              "sessionStorage",
-              "body"
-            ]
+            "type": "string"
           },
           "type": {
             "title": "Type of the attribute",
@@ -236,10 +152,6 @@
               "boolean",
               "number",
               "null"
-            ],
-            "examples": [
-              "object",
-              "PID->JSON"
             ]
           },
           "default": {
@@ -252,21 +164,10 @@
               "boolean",
               "number",
               "null"
-            ],
-            "examples": [
-              "",
-              [],
-              {},
-              false,
-              true,
-              0,
-              null
             ]
           }
-        },
-        "examples": []
-      },
-      "examples": []
+        }
+      }
     },
     "adapters": {
       "title": "List of adapters",
@@ -275,138 +176,8 @@
       "items": {
         "title": "Adapter",
         "description": "A reference to an adapter for the technical specification of a FAIR Digital Operation Type Profile.",
-        "type": "string",
-        "examples": [
-          "PID->CURL",
-          "PID->JSFetchAPI",
-          "PID->JavaHTTPClient",
-          "..."
-        ]
-      },
-      "examples": [
-        [
-          "PID->CURL",
-          "PID->JSFetchAPI",
-          "PID->JavaHTTPClient",
-          "..."
-        ]
-      ]
+        "type": "string"
+      }
     }
-  },
-  "examples": [
-    {
-      "title": "HTTP Request",
-      "description": "blablub",
-      "createdAt": "20231115Z1800",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "provenance": [
-        {
-          "type": "orcid",
-          "url": "https://orcid.org/0009-0005-2800-4833"
-        },
-        {
-          "type": "plain",
-          "name": "Nicolas Blumenröhr",
-          "email": "nicolas.blumenroehr@kit.edu"
-        }
-      ],
-      "requiredAttributes": [
-        {
-          "name": "url",
-          "type": "PID -> URL"
-        },
-        {
-          "name": "method",
-          "type": "PID -> HTTPMethod"
-        }
-      ],
-      "optionalAttributes": [
-        {
-          "name": "headers",
-          "type": [
-            {
-              "name": "string",
-              "value": "string"
-            }
-          ],
-          "default": []
-        },
-        {
-          "name": "cookies",
-          "type": [
-            {
-              "name": "string",
-              "value": "string"
-            }
-          ],
-          "default": []
-        },
-        {
-          "name": "sessionStorage",
-          "type": [
-            {
-              "name": "string",
-              "value": "string"
-            }
-          ],
-          "default": []
-        },
-        {
-          "name": "body",
-          "type": "any OR PID -> JSON",
-          "default": ""
-        }
-      ],
-      "adapters": [
-        "PID -> CURL",
-        "PID -> JSFetchAPI",
-        "PID -> JavaHTTPClient",
-        "..."
-      ]
-    },
-    {
-      "title": "Python script",
-      "description": "not specified",
-      "createdAt": "20231115Z1800",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "provenance": [
-        {
-          "type": "orcid",
-          "url": "https://orcid.org/0009-0005-2800-4833"
-        },
-        {
-          "type": "plain",
-          "name": "Nicolas Blumenröhr",
-          "email": "nicolas.blumenroehr@kit.edu"
-        }
-      ],
-      "requiredAttributes": [
-        {
-          "name": "scriptLocation",
-          "type": "PID -> URL"
-        },
-        {
-          "name": "entryPoint",
-          "type": "string"
-        }
-      ],
-      "optionalAttributes": [
-        {
-          "name": "attributes",
-          "type": [
-            {
-              "key": "string",
-              "value": "string"
-            }
-          ],
-          "defaultValue": []
-        }
-      ],
-      "adapters": [
-        "PID -> PythonExec",
-        "PID -> JSPyScript",
-        "PID -> WASM"
-      ]
-    }
-  ]
+  }
 }
