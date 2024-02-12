@@ -1,0 +1,32 @@
+{
+  "requiredAttributes": {
+    "values": [
+      {
+        "key": "somePID or someDataType",
+        "value": "someValue",
+        "type": "equals OR contains OR startsWith AND_SO_ON",
+        "internal_reference": "someInternalReference"
+      },
+      {
+        "key": "anotherPID or anotherDataType",
+        "value": "anotherValue",
+        "type": "not OR notContains OR notSpecified AND_SO_ON",
+        "internal_reference": "anotherInternalReference"
+      },
+      {
+        "values": [
+          {
+            "key": "thisPID or thisDataType",
+            "value": "thisValue"
+          },
+          {
+            "key": "thatPID or thatDataType",
+            "value": "thatValue"
+          }
+        ],
+        "mode": "xor"
+      }
+    ],
+    "mode": "and OR or OR xor OR none AND_SO_ON"
+  }
+}

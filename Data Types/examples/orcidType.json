@@ -1,0 +1,42 @@
+{
+  "$schema": "../schema.json",
+  "pid": "PID->ORCiD",
+  "name": "ORCiD",
+  "description": "This data type defines a link to an ORCiD.",
+  "standards": [
+    {
+      "natureOfApplicability": "extends",
+      "name": "27729",
+      "issuer": "ISO",
+      "details": "see https://www.isni.org/ or for resolution https://isni.oclc.nl"
+    },
+    {
+      "natureOfApplicability": "constrains",
+      "name": "ORCiD",
+      "issuer": "other",
+      "details": "see https://orcid.org/ or for API https://orcid.org/api/"
+    }
+  ],
+  "contributors": [
+    {
+      "type": "ORCiD",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    },
+    {
+      "type": "Text",
+      "name": "Nicolas Blumenröhr",
+      "email": "nicolas.blumenroehr@kit.edu",
+      "details": "Karlruhe Institute of Technology"
+    }
+  ],
+  "createdAt": "2024-02-09T12:00:00Z",
+  "lastModifiedAt": "2024-02-09T12:00:00Z",
+  "expectedUses": [
+    "Identification of a person",
+    "Linking to a persons ORCiD profile"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "primitiveDataType": "string",
+  "regex": "https://orcid.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]",
+  "regexFlavour": "ecma-262-RegExp"
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "../schema.json",
+  "pid": "PID->MapWithMappingService",
+  "name": "Map with mapping service",
+  "description": "This is a FD Operation that enables to map a document with a given schema using the mapping service.",
+  "createdAt": "2024-02-06T12:00:00Z",
+  "contributors": [
+    {
+      "type": "ORCiD",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    },
+    {
+      "type": "Text",
+      "name": "Nicolas Blumenröhr",
+      "email": "nicolas.blumenroehr@kit.edu",
+      "details": "Karlsruhe Institute of Technology"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "executableOn": [
+    {
+      "pid": "PID->MappableDocument",
+      "internal_reference": "document"
+    }
+  ],
+  "returns": [
+    {
+      "pid": "PID->JSONDocument",
+      "internal_reference": "mappedDocument"
+    }
+  ],
+  "environment": [],
+  "execution": [
+    {
+      "title": "Download files",
+      "mode": "async",
+      "steps": [
+        {
+          "title": "Download mapping schema",
+          "operation": "PID->Download file",
+          "url": "document@PID->Schema@PID->DigitalObjectLocation",
+          "output": [
+            {
+              "key": "file",
+              "internal_reference": "schema"
+            }
+          ]
+        },
+        {
+          "title": "Download mapping-service plugin",
+          "operation": "PID->Download file",
+          "url": "document@PID->Schema@PID->Plugin@PID->DigitalObjectLocation",
+          "output": [
+            {
+              "key": "file",
+              "internal_reference": "plugin"
+            }
+          ]
+        },
+        {
+          "title": "Download document to map",
+          "operation": "PID->Download file",
+          "url": "document@PID->DigitalObjectLocation",
+          "output": [
+            {
+              "key": "file",
+              "internal_reference": "document"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Start mapping service",
+      "mode": "sync",
+      "operation": "PID->DockerMappingService",
+      "attributes": [
+        {
+          "key": "plugins",
+          "value": [
+            "plugin"
+          ]
+        }
+      ],
+      "output": [
+        {
+          "key": "serviceURL",
+          "internal_reference": "mpsURL"
+        }
+      ]
+    },
+    {
+      "title": "Upload schema to Mapping-Service",
+      "mode": "sync",
+      "operationTypeProfile": "PID->HTTP",
+      "attributes": [
+        {
+          "key": "url",
+          "value": "mpsURL"
+        },
+        {
+          "key": "method",
+          "value": "PID->HTTPMethod.POST"
+        },
+        {
+          "key": "payload",
+          "value": "schema"
+        }
+      ],
+      "output": [
+        {
+          "key": "body.schemaID",
+          "internal_reference": "schemaID"
+        }
+      ]
+    },
+    {
+      "title": "Map document",
+      "mode": "sync",
+      "operationTypeProfile": "PID->HTTP",
+      "attributes": [
+        {
+          "key": "url",
+          "value": "${{mpsURL}}/mappingExec/${{schemaID}}"
+        },
+        {
+          "key": "method",
+          "value": "PID->HTTPMethod.POST"
+        },
+        {
+          "key": "payload",
+          "value": "document"
+        }
+      ],
+      "output": [
+        {
+          "key": "body",
+          "internal_reference": "mappedDocument"
+        }
+      ]
+    }
+  ]
+}

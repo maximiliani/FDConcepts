@@ -1,0 +1,107 @@
+{
+  "$schema": "../schema.json",
+  "pid": "PID->GetORCiDProfileInformationViaRESTAPI",
+  "name": "Get ORCiD Profile Information via REST API",
+  "description": "This Operation retrieves the profile information of an ORCiD ID via the ORCiD API. The ORCiD number sequence is extracted from the ORCiD-Profile URL. An API Key for the ORCiD API is required and to be set in the environment.",
+  "createdAt": "2024-02-05T12:00:00Z",
+  "contributors": [
+    {
+      "type": "ORCiD",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    },
+    {
+      "type": "Text",
+      "name": "Nicolas Blumenröhr",
+      "email": "nicolas.blumenroehr@kit.edu"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "executableOn": [
+    {
+      "pid": "PID->ORCiD",
+      "internal_reference": "orcidURL"
+    }
+  ],
+  "returns": [
+    {
+      "pid": "PID->ORCiDProfile",
+      "internal_reference": "profile"
+    },
+    {
+      "pid": "PID->HTTPStatusCode",
+      "internal_reference": "status"
+    }
+  ],
+  "environment": [
+    {
+      "pid": "PID->ORCiDAPIKey",
+      "internal_reference": "apiKey",
+      "description": "The API Key for the ORCiD API"
+    }
+  ],
+  "execution": [
+    {
+      "title": "Extract ORCiD ID from ORCiD-URL",
+      "mode": "sync",
+      "operationTypeProfile": "PID -> regex",
+      "attributes": [
+        {
+          "key": "pattern",
+          "value": "https?://orcid.org/(\\d{4}-\\d{4}-\\d{4}-\\d{3}X?)"
+        },
+        {
+          "key": "flavour",
+          "value": "ECMA262"
+        },
+        {
+          "key": "input",
+          "value": "${{orcidURL}}"
+        }
+      ],
+      "output": [
+        {
+          "key": "groups.1",
+          "internal_reference": "orcid"
+        }
+      ]
+    },
+    {
+      "title": "Get profile data from ORCID.org API",
+      "mode": "sync",
+      "operationTypeProfile": "PID -> HTTP",
+      "attributes": [
+        {
+          "key": "url",
+          "value": "https://orcid.org/api/${{orcid}}"
+        },
+        {
+          "key": "method",
+          "value": "PID -> HTTPMethod.GET"
+        },
+        {
+          "key": "headers",
+          "value": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer ${{apiKey}}"
+            }
+          ]
+        }
+      ],
+      "output": [
+        {
+          "key": "status",
+          "internal_reference": "status"
+        },
+        {
+          "key": "body",
+          "internal_reference": "profile"
+        }
+      ]
+    }
+  ]
+}

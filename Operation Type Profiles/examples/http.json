@@ -1,0 +1,64 @@
+{
+  "$schema": "../schema.json",
+  "pid": "PID->HTTPRequest",
+  "name": "HTTP Request",
+  "description": "This pattern is used to make a HTTP request to a server.",
+  "createdAt": "2024-02-06T12:00:00Z",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "contributors": [
+    {
+      "type": "ORCiD",
+      "url": "https://orcid.org/0009-0005-2800-4833"
+    }
+  ],
+  "attributes": [
+    {
+      "pid": "PID->URL",
+      "name": "URL",
+      "description": "The URL of the server to which the request is to be made.",
+      "obligation": "Mandatory",
+      "repeatable": false
+    },
+    {
+      "pid": "PID->HTTPMethod",
+      "name": "HTTP Method",
+      "description": "The HTTP method to be used for the request.",
+      "obligation": "Mandatory",
+      "repeatable": false
+    },
+    {
+      "pid": "PID->HTTPHeader",
+      "name": "HTTP Header",
+      "description": "HTTP Header to be sent with the request.",
+      "obligation": "Optional",
+      "repeatable": true
+    },
+    {
+      "pid": "PID->Cookie",
+      "name": "Cookie",
+      "description": "Cookie to be sent with the request.",
+      "obligation": "Optional",
+      "repeatable": true
+    },
+    {
+      "pid": "PID->SessionStorage",
+      "name": "Session Storage",
+      "description": "Session storage variable to be sent with the request.",
+      "obligation": "Optional",
+      "repeatable": true
+    },
+    {
+      "pid": "PID->RequestBody",
+      "name": "Request Body",
+      "description": "The body of the request.",
+      "obligation": "Optional",
+      "repeatable": false
+    }
+  ],
+  "adapters": [
+    "PID -> CURL",
+    "PID -> JSFetchAPI",
+    "PID -> JavaHTTPClient",
+    "..."
+  ]
+}

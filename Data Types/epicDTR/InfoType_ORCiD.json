@@ -1,0 +1,81 @@
+{
+  "id": "21.T11148/a49c391b326933f9c1bc",
+  "type": "PID-InfoType",
+  "content": {
+    "identifier": "21.T11148/a49c391b326933f9c1bc",
+    "name": "ORCID-nameIdentifier",
+    "provenance": {
+      "creationDate": "2016-06-29T14:05:36.187Z",
+      "lastModificationDate": "2018-05-11T03:45:07.129Z",
+      "contributors": [
+        {
+          "identifiedUsing": "Text",
+          "name": "Ulrich Schwardmann",
+          "details": "GWDG"
+        }
+      ]
+    },
+    "validationSchema": "{\"required\": [\"ORCID-nameIdentifier\"], \"additionalProperties\": false, \"definitions\": {\"21.T11148_d93427e3c56173e9dc08\": {\"pattern\": \"^10\\\\.([\\\\x00-\\\\x2D|\\\\x30-\\\\x3F|\\\\x41-\\\\xFF])+(\\\\.([\\\\x00-\\\\x2D|\\\\x30-\\\\x3F|\\\\x41-\\\\xFF])+)*\\\\/([\\\\x00-\\\\xFF])+$\", \"type\": \"string\", \"description\": \"DOI-Identifier-General@21.T11148/d93427e3c56173e9dc08\"}, \"21.T11148_f1627ce85386d8d75078\": {\"pattern\": \"(.)*\", \"type\": \"string\", \"description\": \"unicode-line-string@21.T11148/f1627ce85386d8d75078\"}, \"21.T11148_3d6f226fa5cafc6d7b16\": {\"enum\": [\"ORCID\"], \"type\": \"string\", \"description\": \"ORCID-keyword@21.T11148/3d6f226fa5cafc6d7b16\"}}, \"$schema\": \"http://json-schema.org/draft-04/schema#\", \"type\": \"object\", \"properties\": {\"ORCID-nameIdentifier\": {\"additionalProperties\": false, \"required\": [\"nameIdentifierID\", \"nameIdentifierScheme\"], \"type\": \"object\", \"description\": \"ORCID-nameIdentifier@21.T11148/a49c391b326933f9c1bc\", \"properties\": {\"nameIdentifierScheme\": {\"$ref\": \"#/definitions/21.T11148_3d6f226fa5cafc6d7b16\"}, \"schemeURI\": {\"$ref\": \"#/definitions/21.T11148_f1627ce85386d8d75078\"}, \"nameIdentifierID\": {\"$ref\": \"#/definitions/21.T11148_d93427e3c56173e9dc08\"}}}}}",
+    "standards": [
+      {
+        "natureOfApplicability": "depends",
+        "details": "http://doi.org/10.5438/0010",
+        "name": "https://schema.datacite.org",
+        "issuer": "DataCite"
+      }
+    ],
+    "representationsAndSemantics": [
+      {
+        "subSchemaRelation": "denyAdditionalProperties",
+        "expression": "",
+        "allowAbbreviatedForm": "No",
+        "value": ""
+      }
+    ],
+    "properties": [
+      {
+        "identifier": "21.T11148/d93427e3c56173e9dc08",
+        "representationsAndSemantics": [
+          {
+            "obligation": "Mandatory",
+            "repeatable": "No",
+            "expression": "",
+            "value": ""
+          }
+        ],
+        "name": "nameIdentifierID"
+      },
+      {
+        "identifier": "21.T11148/3d6f226fa5cafc6d7b16",
+        "representationsAndSemantics": [
+          {
+            "obligation": "Mandatory",
+            "repeatable": "No",
+            "expression": "",
+            "value": ""
+          }
+        ],
+        "name": "nameIdentifierScheme"
+      },
+      {
+        "identifier": "21.T11148/f1627ce85386d8d75078",
+        "representationsAndSemantics": [
+          {
+            "obligation": "Optional",
+            "repeatable": "No",
+            "expression": "",
+            "value": ""
+          }
+        ],
+        "name": "schemeURI"
+      }
+    ],
+    "description": " Uniquely identifies an individual or legal entity,  according to ORCID schema. (context : DataCite)\n"
+  },
+  "metadata": {
+    "createdOn": 1467209136187,
+    "createdBy": "21.T11148/6da2e62f4f249e8c80c9",
+    "modifiedOn": 1526010307132,
+    "modifiedBy": "admin"
+  }
+}

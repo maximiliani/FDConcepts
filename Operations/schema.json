@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "null",
+  "title": "FAIR Digital Operation",
+  "description": "A schema for machine actionable operations based on strongly typed FAIR data.",
+  "type": "object",
+  "required": [
+    "pid",
+    "name",
+    "description",
+    "createdAt",
+    "license",
+    "contributors",
+    "executableOn",
+    "returns",
+    "environment",
+    "execution"
+  ],
+  "properties": {
+    "pid": {
+      "title": "PID",
+      "description": "A automatically generated persistent identifier referring to this operation.",
+      "type": "string"
+    },
+    "name": {
+      "title": "Type Name",
+      "description": "A human readable name for the operation",
+      "type": "string",
+      "maxLength": 128
+    },
+    "description": {
+      "title": "Description",
+      "description": "A human readable description of the operation",
+      "type": "string",
+      "maxLength": 2048,
+      "pattern": "(.|\n)*"
+    },
+    "createdAt": {
+      "title": "Creation date",
+      "description": "The date when this operation was created in RFC 3339 format.",
+      "type": "string",
+      "format": "datetime"
+    },
+    "lastModifiedAt": {
+      "title": "Modification date",
+      "description": "The date when this operation was lastly modified in RFC 3339 format.",
+      "type": "string",
+      "format": "datetime"
+    },
+    "license": {
+      "title": "License",
+      "description": "The license of this operation. It is a PID or URL pointing to a license.",
+      "type": "string"
+    },
+    "contributors": {
+      "title": "Contributors",
+      "description": "Information about the creators/maintainers/contributors.",
+      "type": "array",
+      "items": {
+        "title": "Provenance information",
+        "description": "Information about a person, group, or organization.",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "title": "Type of the provenance information",
+            "description": "The type specifies the kind of reference to the subject. It can be a URL, a Handle, an ORCiD, or some plain text.",
+            "type": "string",
+            "enum": [
+              "Handle",
+              "ORCiD",
+              "URL",
+              "Text"
+            ]
+          },
+          "url": {
+            "title": "URL",
+            "description": "A URL referring to a person, group, or organization. When ORCiD is chosen as a type, this refers to the ORCiD profile.",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "description": "The name of a person, group, or organization",
+            "type": "string"
+          },
+          "email": {
+            "title": "E-Mail address",
+            "description": "An email address for a person, group, or organization",
+            "type": "string"
+          },
+          "details": {
+            "title": "Details",
+            "type": "string",
+            "format": "textarea",
+            "maxLength": 1024
+          }
+        }
+      }
+    },
+    "executableOn": {
+      "title": "Executable on",
+      "description": "This field describes the data types and type profiles that this operation can be executed on. If multiple types are specified, the operation can be executed on any ONE of them.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Executable on",
+        "description": "An executable on instance consists out of the PID of the data type/type profile and an internal reference.",
+        "type": "object",
+        "required": [
+          "pid",
+          "internal_reference"
+        ],
+        "properties": {
+          "pid": {
+            "title": "PID of the data type/type profile",
+            "description": "The PID referring to the data type/type profile that this operation can be executed on.",
+            "type": "string"
+          },
+          "internal_reference": {
+            "title": "Name of the internal reference",
+            "description": "An internal reference is used to refer to the value linked to the key within the operation. It is usually a human-readable name because it is not exposed outside this operation. To insert a value referenced by such a internal reference into a parameter, use ${{reference_name}}.",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description of how the referred data type/type profile is used",
+            "description": "A human-readable description of the executable on relation.",
+            "type": "string",
+            "maxLength": 2048,
+            "pattern": "(.|\n)*"
+          }
+        }
+      }
+    },
+    "returns": {
+      "title": "Returns",
+      "description": "This field describes the data types and type profiles that this operation returns. If multiple types are specified, the operation returns all of them.",
+      "type": "array",
+      "items": {
+        "title": "Returns",
+        "description": "A returns instance consists out of the PID of the data type/type profile and an internal reference.",
+        "type": "object",
+        "required": [
+          "pid",
+          "internal_reference"
+        ],
+        "properties": {
+          "pid": {
+            "title": "PID of the data type/type profile",
+            "description": "The PID referring to the data type/type profile that this operation returns.",
+            "type": "string"
+          },
+          "internal_reference": {
+            "title": "Name of the internal reference",
+            "description": "An internal reference is used to refer to the value linked to the key within the operation. It is usually a human-readable name because it is not exposed outside this operation. To insert a value referenced by such a internal reference into a parameter, use ${{reference_name}}.",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description of the return value",
+            "description": "A human-readable description of the return value and what it describes.",
+            "type": "string",
+            "maxLength": 2048,
+            "pattern": "(.|\n)*"
+          }
+        }
+      }
+    },
+    "environment": {
+      "title": "Environment",
+      "description": "This field describes the environment in which the operation is executed. It is a list of key-value pairs. This field is meant to be used for environment variables, API keys, and other environment-specific settings which are specified by the executor.",
+      "type": "array",
+      "items": {
+        "title": "Environment variable",
+        "description": "An environment variable is a key-value pair. The key is a PID, the value defined in the executor is referenced by the internal reference. There is a description for the environment variable.",
+        "type": "object",
+        "required": [
+          "pid",
+          "internal_reference",
+          "description"
+        ],
+        "properties": {
+          "pid": {
+            "title": "PID of the environment variable",
+            "description": "The PID referring to the environment variable.",
+            "type": "string"
+          },
+          "internal_reference": {
+            "title": "Name of the internal reference",
+            "description": "An internal reference is used to refer to the value linked to the key within the operation. It is usually a human-readable name because it is not exposed outside this operation. To insert a value referenced by such a internal reference into a parameter, use ${{reference_name}}.",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description of the environment variable",
+            "description": "A human-readable description of the environment variable.",
+            "type": "string",
+            "maxLength": 2048,
+            "pattern": "(.|\n)*"
+          }
+        }
+      }
+    },
+    "execution": {
+      "title": "Definition of the execution",
+      "description": "This field describes the execution of an operation. It varies depending on the type of operation. For a single operation, it is a single object. For a workflow, it is an array of objects. The schema of the objects is the same for both types of operations.",
+      "type": "array",
+      "items": {
+        "title": "Operation step",
+        "description": "An operation step describes a single step in the execution of an operation it can be called on recursively to enable complexly folded operation.",
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "properties": {
+          "title": {
+            "title": "Title of the operation step",
+            "description": "A human-readable title that describes this operation step.",
+            "type": "string"
+          },
+          "mode": {
+            "title": "Mode of the operation step",
+            "description": "The mode of an operation step can be either async or sync. Async means that all the contained operation steps are executed asynchronously, and all contained steps can be executed in parallel. Sync means that the operation steps are executed in the exact order they are specified in.",
+            "type": "string",
+            "enum": [
+              "async",
+              "sync"
+            ],
+            "default": "sync"
+          },
+          "steps": {
+            "title": "A recursive array of operation steps",
+            "description": "This list contains all the steps that are executed in this operation step.",
+            "items": {
+              "$recursiveRef": "#/properties/execution/items"
+            }
+          },
+          "operation": {
+            "title": "Reference to an operation",
+            "description": "This field is used to reference an operation that is executed in this operation step. Usually, the value of this field is a PID.",
+            "type": "string"
+          },
+          "attributes": {
+            "title": "Attributes of the operation",
+            "description": "This field describes the attributes of an operation. It is a list of key-value pairs.",
+            "type": "array",
+            "items": {
+              "title": "Attribute",
+              "description": "An attribute is a key-value pair. The key is usually a PID, and the value is a string or an array of strings. The value can also be a reference to an internal reference.",
+              "type": "object",
+              "required": [
+                "key",
+                "value"
+              ],
+              "properties": {
+                "key": {
+                  "title": "Key/Name of the attribute",
+                  "description": "Name how this attribute is called in the FD Operation or Operation Type Profile.",
+                  "type": "string"
+                },
+                "value": {
+                  "title": "Value of the attribute",
+                  "description": "The value of the attribute can be anything. The value can also be an internal reference.",
+                  "type": [
+                    "object",
+                    "array",
+                    "string",
+                    "boolean",
+                    "number",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "output": {
+            "title": "Output",
+            "description": "This field describes all the used outputs of an operation step. ",
+            "type": "array",
+            "items": {
+              "title": "Output Variable",
+              "description": "The key points to the value generated by the execution of the operation step. This generated value is referred to by an internal reference.",
+              "type": "object",
+              "required": [
+                "key",
+                "internal_reference"
+              ],
+              "properties": {
+                "key": {
+                  "title": "Key of the output",
+                  "description": "The key is used to reference the value generated by the execution of the operation step.",
+                  "type": "string"
+                },
+                "internal_reference": {
+                  "title": "Internal reference to the result",
+                  "description": "This field is used to reference the result of an operation. It is usually a human-readable name because it is not exposed outside this operation.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "operationTypeProfile": {
+            "title": "Reference to an operation type profile",
+            "description": "This field is used to reference an operation type profile that is executed in this operation step. Usually, the value of this field is a PID.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
