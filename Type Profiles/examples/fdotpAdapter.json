@@ -20,7 +20,7 @@
       "pid": "PID->Language",
       "name": "Programming Language",
       "description": "The programming language used to implement the adapter.",
-      "mandatory": true,
+      "obligation": "Mandatory",
       "repeatable": false
     },
     {

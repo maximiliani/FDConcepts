@@ -20,7 +20,7 @@
   "contributors": [
     {
       "type": "ORCiD",
-      "value": "https://orcid.org/0009-0005-2800-4833"
+      "url": "https://orcid.org/0009-0005-2800-4833"
     },
     {
       "type": "Text",
@@ -29,15 +29,14 @@
       "details": "Karlruhe Institute of Technology"
     }
   ],
-  "createdAt": "2019-11-20",
-  "lastModifiedAt": "2019-11-20",
+  "createdAt": "2024-02-09T12:00:00Z",
+  "lastModifiedAt": "2024-02-09T12:00:00Z",
   "expectedUses": [
     "Identification of a person",
     "Linking to a persons ORCiD profile"
   ],
-  "representationAndSemantics": [],
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "primitiveDataType": "string",
-  "regexp": "https://orcid.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]",
+  "regex": "https://orcid.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]",
   "regexFlavour": "ecma-262-RegExp"
 }

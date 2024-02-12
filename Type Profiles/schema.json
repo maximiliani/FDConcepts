@@ -191,13 +191,13 @@
         "type": "string"
       }
     },
-    "properties": {
+    "attributes": {
       "type": "array",
-      "title": "Properties",
+      "title": "Attributes",
       "description": "Type dependencies used for expressing how this type is built from other types",
       "minItems": 1,
       "items": {
-        "title": "Property",
+        "title": "Attribute",
         "type": "object",
         "required": [
           "pid",
@@ -206,7 +206,7 @@
         "properties": {
           "pid": {
             "title": "PID",
-            "description": "PID referring to the data type or type profile this property uses",
+            "description": "PID referring to the data type or type profile this attribute uses",
             "type": "string"
           },
           "name": {
@@ -224,13 +224,13 @@
           },
           "repeatable": {
             "title": "Repeatability",
-            "description": "Cardinality of this property.",
+            "description": "Cardinality of this attribute.",
             "type": "boolean",
             "default": false
           },
           "obligation": {
             "title": "Obligation",
-            "description": "Describes if this property is optional or mandatory to be specified in the FDO.",
+            "description": "Describes if this attribute is optional or mandatory to be specified in the FDO.",
             "type": "string",
             "enum": [
               "Optional",

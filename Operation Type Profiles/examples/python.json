@@ -11,31 +11,29 @@
       "url": "https://orcid.org/0009-0005-2800-4833"
     }
   ],
-  "requiredAttributes": [
-    {
-      "name": "scriptLocation",
-      "type": "PID -> URL"
-    },
-    {
-      "name": "entryPoint",
-      "type": "string"
-    }
-  ],
-  "optionalAttributes": [
-    {
-      "name": "attributes",
-      "type": [
-        {
-          "key": "string",
-          "value": "string"
-        }
-      ],
-      "default": []
-    }
-  ],
   "adapters": [
     "PID -> PythonExec",
     "PID -> JSPyScript",
     "PID -> WASM"
+  ],
+  "attributes": [
+    {
+      "pid": "PID->URL",
+      "name": "Script Location",
+      "description": "The location of the Python script.",
+      "obligation": "Mandatory"
+    },
+    {
+      "pid": "PID->String",
+      "name": "Entry point",
+      "description": "The entry point of the Python script.",
+      "obligation": "Mandatory"
+    },
+    {
+      "pid": "PID->KVPair",
+      "name": "Attribute",
+      "description": "An attribute (key-value pair) to be passed to the Python script.",
+      "obligation": "Optional"
+    }
   ]
 }

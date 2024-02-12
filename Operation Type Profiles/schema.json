@@ -11,7 +11,7 @@
     "createdAt",
     "license",
     "contributors",
-    "requiredAttributes",
+    "attributes",
     "adapters"
   ],
   "properties": {
@@ -97,74 +97,63 @@
         }
       }
     },
-    "requiredAttributes": {
-      "title": "Required attributes",
-      "description": "A list of required attributes for the FAIR Digital Operation Type Profile. Required attributes are attributes that are required to be specified in a FAIR Digital Operation.",
+    "attributes": {
       "type": "array",
+      "title": "Attributes",
+      "description": "Definition of the attributes this operation type profile uses. The attributes are used to describe the input an operation uses to produce an output.",
       "items": {
-        "title": "Required attribute",
-        "description": "A required attribute for the FAIR Digital Operation Type Profile.",
+        "title": "Attribute",
         "type": "object",
         "required": [
-          "name",
-          "type"
+          "pid",
+          "name"
         ],
         "properties": {
+          "pid": {
+            "title": "PID",
+            "description": "PID referring to the data type or type profile this attribute uses",
+            "type": "string"
+          },
           "name": {
-            "title": "Name of the attribute",
-            "description": "A human-readable name of the attribute.",
-            "type": "string"
+            "title": "Name",
+            "description": "Name assigned to this attribute",
+            "type": "string",
+            "maxLength": 256
           },
-          "type": {
-            "title": "Type of the attribute",
-            "description": "A reference to the type of the attribute. The type of the attribute can be a primitive type or a PID.",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "optionalAttributes": {
-      "title": "Optional attributes",
-      "description": "A list of optional attributes for the FAIR Digital Operation Type Profile. Optional attributes are attributes that are optional to be specified in a FAIR Digital Operation. Those attributes have a default value, which is used if the attribute is not specified.",
-      "type": "array",
-      "items": {
-        "title": "Optional attribute",
-        "description": "An optional attribute for the FAIR Digital Operation Type Profile.",
-        "type": "object",
-        "required": [
-          "name",
-          "type",
-          "default"
-        ],
-        "properties": {
-          "name": {
-            "title": "Name of the attribute",
-            "description": "A human-readable name of the attribute.",
-            "type": "string"
+          "description": {
+            "title": "Description",
+            "description": "Description of how this data type/type profile is used in this context",
+            "type": "string",
+            "format": "textarea",
+            "maxLength": 2048
           },
-          "type": {
-            "title": "Type of the attribute",
-            "description": "A reference to the type of the attribute. The type of the attribute can be a primitive type or a PID.",
-            "type": [
-              "string",
-              "array",
-              "object",
-              "boolean",
-              "number",
-              "null"
-            ]
+          "repeatable": {
+            "title": "Repeatability",
+            "description": "Cardinality of this property.",
+            "type": "boolean",
+            "default": false
           },
-          "default": {
-            "title": "Default value of the attribute",
-            "description": "The default value of the attribute. The default value is used if the attribute is not specified in a FAIR Digital Operation or other place in the process.",
-            "type": [
-              "string",
-              "array",
-              "object",
-              "boolean",
-              "number",
-              "null"
-            ]
+          "obligation": {
+            "title": "Obligation",
+            "description": "Describes if this property is optional or mandatory to be specified in the operation.",
+            "type": "string",
+            "enum": [
+              "Optional",
+              "Mandatory"
+            ],
+            "default": "Optional"
+          },
+          "defaultValue": {
+            "title": "Default Value",
+            "description": "A default value can be provided here. Needs to be a string representation of a JSON object that is compatible with these restrictions. String delimiters need to be escaped",
+            "type": "string",
+            "maxLength": 262144
+          },
+          "constantValue": {
+            "title": "Constant Value",
+            "description": "Used if the type has a constant value on all possible instances for this parameter. This value cannot be changed in the Operation. Needs to be a string representation of a JSON object that is compatible with these restrictions. String delimiters need to be escaped",
+            "type": "string",
+            "maxLength": 262144
           }
         }
       }
